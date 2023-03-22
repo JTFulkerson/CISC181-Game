@@ -9,8 +9,7 @@
  * @version Unit v1.0
  */
 public abstract class Unit {
-    //Variables//
-
+    //Variables
     protected char symbol; // The text representation of the piece
     protected String name; // The units name
     protected double health; // The units base health
@@ -23,8 +22,6 @@ public abstract class Unit {
     protected int movement; // Amount unit can move
     protected int movementModifier; // Modifications to units movement
     protected String teamColor; // The teams color
-
-    ////////////////
 
 
     public Unit(char symbol, String name, double health, double healthModifier, double damage, double damageModifier,

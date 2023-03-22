@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="BoardSquareTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-22T20:18:07" hostname="wifi-roaming-128-4-186-36.wifi.udel.edu" time="0.012">
+  <properties/>
+  <testcase name="testingBoardSpace()" classname="BoardSquareTest" time="0.012"/>
+  <system-out><![CDATA[Testing Board Square Class
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
