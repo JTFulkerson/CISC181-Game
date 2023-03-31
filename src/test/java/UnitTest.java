@@ -1,11 +1,12 @@
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-import static org.junit.Assert.fail;
-import static org.junit.jupiter.api.Assertions.*;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 
-import java.lang.reflect.*;
+import static org.junit.Assert.*;
 
-class UnitTest {
+public class UnitTest {
 
    @Test
     public void test_Unit() {
@@ -32,14 +33,9 @@ class UnitTest {
 
         System.out.println("Testing Unit Constructor passes");
 
-        // takeDamage should not be implemented in the Unit class
-        Method m = clazz.getDeclaredMethod("takeDamage", double.class);
-        assertEquals(void.class, m.getReturnType());
-        assertTrue(Modifier.isAbstract(m.getModifiers()));
-
-        // canRecruit should not be implemented in the Unit class
-        m = clazz.getDeclaredMethod("canRecruit", new Class[]{});
-        assertEquals(boolean.class, m.getReturnType());
+        // spawn should not be implemented in the Unit class
+        Method m = clazz.getDeclaredMethod("spawn", null);
+        assertEquals(Unit.class, m.getReturnType());
         assertTrue(Modifier.isAbstract(m.getModifiers()));
 
         } catch (Exception e) {
@@ -56,7 +52,7 @@ class UnitTest {
     public void test_TomJerryUnit() {
 
         System.out.println("Testing Tom & Jerry Unit Class");
-        Unit tj = new TomJerryUnit(/*replace with arguments*/);
+        Unit tj = new TomJerryUnit();
 
         // check inheritance
         assertTrue(tj instanceof Unit);
@@ -66,7 +62,7 @@ class UnitTest {
             // takeDamage should be implemented
             Method m = TomJerryUnit.class.getDeclaredMethod("takeDamage", double.class);
             assertEquals(void.class, m.getReturnType());
-            assertTrue(Modifier.isAbstract(m.getModifiers()));
+            assertFalse(Modifier.isAbstract(m.getModifiers()));
 
         } catch (Exception e) {
 
@@ -82,16 +78,16 @@ class UnitTest {
     public void test_BartSimpsonUnit() {
 
         System.out.println("Testing Bart Simpson Unit Class");
-        BartSimpsonUnit bart = new BartSimpsonUnit(/*replace with arguments*/);
+        BartSimpsonUnit bart = new BartSimpsonUnit();
 
         assertTrue(bart instanceof Unit);
 
         try {
 
             // canRecruit should be implemented
-            Method m = BartSimpsonUnit.class.getDeclaredMethod("isRecruit", new Class[]{});
+            Method m = BartSimpsonUnit.class.getDeclaredMethod("canRecruit", new Class[]{});
             assertEquals(boolean.class, m.getReturnType());
-            assertTrue(Modifier.isAbstract(m.getModifiers()));
+            assertFalse(Modifier.isAbstract(m.getModifiers()));
 
         } catch (Exception e) {
 

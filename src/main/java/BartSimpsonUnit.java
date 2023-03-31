@@ -5,13 +5,13 @@
  * This program creates a class for a Bart Simpson Unit
  *
  * @author Brandon Nauta
- * @since 03-01-2023
+ * @since 03-22-2023
  * @version BartSimpsonUnit v2.0
  */
 
 public class BartSimpsonUnit extends Unit {
     private int numTimesSpawned; // The number of times this piece has spawned
-    private boolean distract; // Can use special ability “distract”
+    private boolean distract; // Can use special ability distract
     private boolean recruit; // Can recruit other units
     final static int MAX_NUM_SPAWNED = 1; // The maximum number of times this piece can spawn
 
@@ -31,7 +31,7 @@ public class BartSimpsonUnit extends Unit {
      * @param movement         Amount unit can move
      * @param movementModifier Modifications to units movement
      * @param numTimesSpawned  The number of times this piece has spawned
-     * @param distract         Can use special ability “distract”
+     * @param distract         Can use special ability distract
      * @param recruit          Can recruit other units
      * @param teamColor        The teams color
      */
