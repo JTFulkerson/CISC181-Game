@@ -8,35 +8,35 @@ import static org.junit.Assert.*;
 
 public class UnitTest {
 
-   @Test
+    @Test
     public void test_Unit() {
 
-    // Unit has a constructor
-    // but we should not be able to create a Unit
-    System.out.println("Testing Unit Class");
-
-    try {
-
-        Class<Unit> clazz = Unit.class;
-        Constructor<Unit> ctor = clazz.getDeclaredConstructor();
+        // Unit has a constructor
+        // but we should not be able to create a Unit
+        System.out.println("Testing Unit Class");
 
         try {
 
-            ctor.newInstance();
-            fail("Should not be able to create an instance of Unit");
+            Class<Unit> clazz = Unit.class;
+            Constructor<Unit> ctor = clazz.getDeclaredConstructor();
 
-        } catch (Exception e) {
+            try {
 
-            // should happen
+                ctor.newInstance();
+                fail("Should not be able to create an instance of Unit");
 
-        }
+            } catch (Exception e) {
 
-        System.out.println("Testing Unit Constructor passes");
+                // should happen
 
-        // spawn should not be implemented in the Unit class
-        Method m = clazz.getDeclaredMethod("spawn", null);
-        assertEquals(Unit.class, m.getReturnType());
-        assertTrue(Modifier.isAbstract(m.getModifiers()));
+            }
+
+            System.out.println("Testing Unit Constructor passes");
+
+            // spawn should not be implemented in the Unit class
+            Method m = clazz.getDeclaredMethod("spawn", (Class<?>[]) null);
+            assertEquals(Unit.class, m.getReturnType());
+            assertTrue(Modifier.isAbstract(m.getModifiers()));
 
         } catch (Exception e) {
 
@@ -85,7 +85,7 @@ public class UnitTest {
         try {
 
             // canRecruit should be implemented
-            Method m = BartSimpsonUnit.class.getDeclaredMethod("canRecruit", new Class[]{});
+            Method m = BartSimpsonUnit.class.getDeclaredMethod("canRecruit", new Class[] {});
             assertEquals(boolean.class, m.getReturnType());
             assertFalse(Modifier.isAbstract(m.getModifiers()));
 

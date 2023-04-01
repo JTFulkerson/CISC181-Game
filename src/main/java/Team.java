@@ -25,11 +25,11 @@ public class Team {
     }
 
     // Mutators
-    public void removeUnitFromTeam(Unit unit) {
+    public void removeUnitsFromTeam(Unit unit) {
         this.units.remove(unit);
     }
 
-    public void addUnitToTeam(Unit unit) {
+    public void addUnitsToTeam(Unit unit) {
         unit.teamColor = this.teamColor;
         this.units.add(unit);
     }

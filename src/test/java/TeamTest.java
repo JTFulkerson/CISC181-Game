@@ -1,7 +1,8 @@
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.Test;
 
 import java.util.ArrayList;
+
+import static org.junit.Assert.*;
 
 public class TeamTest {
 
@@ -9,10 +10,9 @@ public class TeamTest {
     public void getTeamName() {
 
         System.out.println("Testing Team class");
-        Unit tj = new TomJerryUnit('T', "Tom & Jerry", 100.0, 0.0, 25.0, 0.0, 0, 5, 5, 1, 0, true, true, false,
-                "Unknown");
-        Unit bart = new BartSimpsonUnit('B', "Bart Simpson", 100.0, 0.0, 25.0, 0.0, 0, 5, 5, 1, 0, 0, true, true,
-                "Unknown");
+
+        Unit tj = new TomJerryUnit();
+        Unit bart = new BartSimpsonUnit();
 
         // Load the pieces in an ArrayList
         ArrayList<Unit> piecesTeamA = new ArrayList<Unit>();
@@ -29,16 +29,16 @@ public class TeamTest {
         assertTrue(teamA.getTeamUnits().contains(tj));
         assertTrue(teamA.getTeamUnits().contains(bart));
 
-        // remove a Unit from teamA
-        teamA.removeUnitFromTeam(bart);
+        // remove Unit from teamA
+        teamA.removeUnitsFromTeam(bart);
         assertEquals(1, teamA.getTeamUnits().size());
         assertFalse(teamA.getTeamUnits().contains(bart));
 
         // create another Team object
         ArrayList<Unit> unitsTeamB = new ArrayList<Unit>();
         Team teamB = new Team("Red", unitsTeamB);
-        // add a Unit the bart to team B
-        teamB.addUnitToTeam(bart);
+        // add a Unit bart to team B
+        teamB.addUnitsToTeam(bart);
         // check that bart color was changed to Red
         assertEquals("Red", bart.getTeamColor());
 
