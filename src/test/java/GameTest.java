@@ -40,7 +40,6 @@ public class GameTest {
         UnitsTeamB.add(redBart);
 
         Player p2 = new Player();
-        p2.setTurn(false);
         Team teamB = new Team("Red", UnitsTeamB);
 
         p2.setTeam(teamB);

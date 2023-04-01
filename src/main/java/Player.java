@@ -7,7 +7,7 @@ public class Player {
 
     public Player() {
         this.playerNumber = 0;
-        this.isTurn = true;
+        this.isTurn = false;
         this.team = new Team("Unknown", new ArrayList<Unit>());
     }
 
