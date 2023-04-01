@@ -1,71 +1,72 @@
-// import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-// import static org.junit.Assert.*;
+import java.util.ArrayList;
 
-// import java.util.ArrayList;
+import static org.junit.jupiter.api.Assertions.*;
 
-// public class GameTest {
+public class GameTest {
 
-// @Test
-// public void gameTests() throws Exception {
+    @Test
+    public void gameTests() throws Exception {
 
-// System.out.println("Testing Game");
+        System.out.println("Testing Game");
 
-// // Create 2 Units for team A
-// Unit blueTJ = new TomJerryUnit();
-// blueTJ.setTeamColor("Blu");
-// Unit blueBart = new BartSimpsonUnit();
-// blueBart.setTeamColor("Blu");
+        // Create 2 Units for team A
+        Unit blueTJ = new TomJerryUnit();
+        blueTJ.setTeamColor("Blu");
+        Unit blueBart = new BartSimpsonUnit();
+        blueBart.setTeamColor("Blu");
 
-// // Load the Units in an ArrayList
-// ArrayList<Unit> UnitsTeamA = new ArrayList<Unit>();
-// UnitsTeamA.add(blueTJ);
-// UnitsTeamA.add(blueBart);
+        // Load the Units in an ArrayList
+        ArrayList<Unit> UnitsTeamA = new ArrayList<Unit>();
+        UnitsTeamA.add(blueTJ);
+        UnitsTeamA.add(blueBart);
 
-// Player p1 = new Player();
-// p1.setTurn(true);
-// Team teamA = new Team("Blu", UnitsTeamA);
+        Player p1 = new Player();
+        p1.setTurn(true);
+        Team teamA = new Team("Blu", UnitsTeamA);
 
-// p1.setPlayersTeam(teamA);
+        p1.setTeam(teamA);
 
-// // Create 2 Units for team B
-// Unit redTJ = new TomJerryUnit();
-// redTJ.setTeamColor("Red");
-// Unit redBart = new BartSimpsonUnit();
-// redBart.setTeamColor("Red");
+        // Create 2 Units for team B
+        Unit redTJ = new TomJerryUnit();
+        redTJ.setTeamColor("Red");
+        Unit redBart = new BartSimpsonUnit();
+        redBart.setTeamColor("Red");
 
-// // Load the Units in an ArrayList
-// ArrayList<Unit> UnitsTeamB = new ArrayList<Unit>();
-// UnitsTeamB.add(redTJ);
-// UnitsTeamB.add(redBart);
+        // Load the Units in an ArrayList
+        ArrayList<Unit> UnitsTeamB = new ArrayList<Unit>();
+        UnitsTeamB.add(redTJ);
+        UnitsTeamB.add(redBart);
 
-// Player p2 = new Player();
-// Team teamB = new Team("Red", UnitsTeamB);
+        Player p2 = new Player();
+        p2.setTurn(false);
+        Team teamB = new Team("Red", UnitsTeamB);
 
-// p2.setPlayersTeam(teamB);
+        p2.setTeam(teamB);
 
-// Game ourGame = new Game(8, 8, p1, p2);
-// System.out.println(ourGame.toString());
+        Game ourGame = new Game(8, 8, p1, p2);
+        System.out.println(ourGame.toString());
 
-// assertEquals(p1, ourGame.getCurrentPlayer());
-// assertEquals(p2, ourGame.getOpponentPlayer());
+        assertEquals(p1,ourGame.getCurrentPlayer());
+        assertEquals(p2,ourGame.getOpponentPlayer());
 
-// assertEquals(teamA, ourGame.getCurrentPlayer().getPlayersTeam());
-// assertEquals(teamB, ourGame.getOpponentPlayer().getPlayersTeam());
+        assertEquals(teamA,ourGame.getCurrentPlayer().getTeam());
+        assertEquals(teamB,ourGame.getOpponentPlayer().getTeam());
 
-// assertTrue(ourGame.isTurn(p1));
-// assertFalse(ourGame.isTurn(p2));
+        assertTrue(ourGame.isTurn(p1));
+        assertFalse(ourGame.isTurn(p2));
 
-// ourGame.changeTurn();
+        ourGame.changeTurn();
 
-// assertEquals(p2, ourGame.getCurrentPlayer());
-// assertEquals(p1, ourGame.getOpponentPlayer());
+        assertEquals(p2,ourGame.getCurrentPlayer());
+        assertEquals(p1,ourGame.getOpponentPlayer());
 
-// assertEquals(teamB, ourGame.getCurrentPlayer().getPlayersTeam());
-// assertEquals(teamA, ourGame.getOpponentPlayer().getPlayersTeam());
+        assertEquals(teamB,ourGame.getCurrentPlayer().getTeam());
+        assertEquals(teamA,ourGame.getOpponentPlayer().getTeam());
 
-// assertTrue(ourGame.isTurn(p2));
-// assertFalse(ourGame.isTurn(p1));
+        assertTrue(ourGame.isTurn(p2));
+        assertFalse(ourGame.isTurn(p1));
 
-// }
-// }
+    }
+}
