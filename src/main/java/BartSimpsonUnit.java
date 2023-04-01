@@ -57,23 +57,23 @@ public class BartSimpsonUnit extends Unit {
     }
 
     public int getNumTimesSpawned() {
-        return numTimesSpawned;
+        return this.numTimesSpawned;
     }
 
     public void setNumTimesSpawned(int numTimesSpawned) {
         this.numTimesSpawned = numTimesSpawned;
     }
 
-    public boolean isDistract() {
-        return distract;
+    public boolean canDistract() {
+        return this.distract;
     }
 
     public void setDistract(boolean distract) {
         this.distract = distract;
     }
 
-    public boolean isRecruit() {
-        return recruit;
+    public boolean canRecruit() {
+        return this.recruit;
     }
 
     public void setRecruit(boolean recruit) {
@@ -86,14 +86,14 @@ public class BartSimpsonUnit extends Unit {
      * @return Boolean representing whether a unit can spawn another unit
      */
     public boolean canSpawn() {
-        return (symbol == Character.toUpperCase(symbol) && numTimesSpawned < MAX_NUM_SPAWNED);
+        return (this.symbol == Character.toUpperCase(symbol) && numTimesSpawned < MAX_NUM_SPAWNED);
     }
 
     /**
      * This method prints out "Unit Distracted!" if the distarct field is true
      */
     public void distracted() {
-        if (distract) {
+        if (this.distract) {
             System.out.println("Unit Distracted!");
         }
     }
@@ -103,9 +103,10 @@ public class BartSimpsonUnit extends Unit {
      * 
      * @return A new BartSimpsonUnit
      */
+    @Override
     public BartSimpsonUnit spawn() {
-        numTimesSpawned++;
-        return new BartSimpsonUnit(Character.toLowerCase(symbol), "Bart Simpson", 100.0, 5.0,
+        this.numTimesSpawned++;
+        return new BartSimpsonUnit(this.symbol, "Bart Simpson", 100.0, 5.0,
                 25.0, 10.0, 0, 1, 1, 1, 1, 0,
                 true, true, "Unknown");
     }

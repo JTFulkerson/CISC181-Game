@@ -9,7 +9,7 @@
  * @version GameBoard v1.0
  */
 public class GameBoard {
-    //Variables//
+    // Variables//
 
     private int numRows;
     private int numColumns;
@@ -27,20 +27,21 @@ public class GameBoard {
     public int getNumRows() {
         return numRows;
     }
+
     public int getNumColumns() {
         return numColumns;
     }
+
     public BoardSquare[][] getSquares() {
         return squares;
     }
 
-    public boolean inBounds (int rowIndex, int columnIndex) {
-        if (rowIndex > this.squares.length || columnIndex > this.squares[rowIndex].length) {
-            return false;
-        }
-        return true;
+    public boolean inBounds(int rowIndex, int columnIndex) {
+        return rowIndex >= 0 && rowIndex < this.squares.length && columnIndex >= 0
+                && columnIndex < this.squares[0].length;
     }
-    private void setUpEmptyBoard () {
+
+    private void setUpEmptyBoard() {
         for (int i = 0; i < this.squares.length; i++) {
             for (int j = 0; j < this.squares[i].length; j++) {
                 this.squares[i][j] = new BoardSquare("White");
@@ -48,7 +49,7 @@ public class GameBoard {
         }
     }
 
-    public BoardSquare findRandomEmptySpaced () {
+    public BoardSquare findRandomEmptySpace() {
         boolean emptySpace = false;
         int row = 0;
         int column = 0;
@@ -63,17 +64,17 @@ public class GameBoard {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         StringBuilder boardString = new StringBuilder();
         boardString.append("Col :       ");
 
-        for(int col = 0; col < squares[0].length; col++){
+        for (int col = 0; col < squares[0].length; col++) {
             boardString.append(col + "        ");
         }
         boardString.append("\n");
-        for(int row = 0; row < squares.length; row++){
+        for (int row = 0; row < squares.length; row++) {
             boardString.append("Row : " + row + "   ");
-            for(int col = 0; col < squares[row].length; col++){
+            for (int col = 0; col < squares[row].length; col++) {
                 boardString.append(squares[row][col].toString() + "  ");
             }
             boardString.append("\n");
