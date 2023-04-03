@@ -23,6 +23,23 @@ public abstract class Unit {
     protected int movementModifier; // Modifications to units movement
     protected String teamColor; // The teams color
 
+    /**
+     * Default constructor
+     * 
+     * @param symbol           The text representation of the piece
+     * @param name             The units name
+     * @param health           The units base health
+     * @param healthModifier   Modifications to units health
+     * @param damage           The units base damage
+     * @param damageModifier   Modifications to units damage
+     * @param luck             Our random luck mechanism
+     * @param xCor             Current coord on x axis
+     * @param yCor             Current coord on y axis
+     * @param movement         Amount unit can move
+     * @param movementModifier Modifications to units movement
+     * @param teamColor        The teams color
+     * 
+     */
     public Unit() {
         this.symbol = ' ';
         this.name = " ";
@@ -38,6 +55,22 @@ public abstract class Unit {
         this.teamColor = " ";
     }
 
+    /**
+     * This constructor accepts 14 parameters
+     * 
+     * @param symbol           The text representation of the piece
+     * @param name             The units name
+     * @param health           The units base health
+     * @param healthModifier   Modifications to units health
+     * @param damage           The units base damage
+     * @param damageModifier   Modifications to units damage
+     * @param luck             Our random luck mechanism
+     * @param xCor             Current coord on x axis
+     * @param yCor             Current coord on y axis
+     * @param movement         Amount unit can move
+     * @param movementModifier Modifications to units movement
+     * @param teamColor        The teams color
+     */
     public Unit(char symbol, String name, double health, double healthModifier, double damage, double damageModifier,
             int luck, int xCor, int yCor, int movement, int movementModifier, String teamColor) {
         this.symbol = symbol;
@@ -150,6 +183,11 @@ public abstract class Unit {
         this.teamColor = teamColor;
     }
 
+    /**
+     * This method will return the string representation of the unit
+     * 
+     * @return String: The string representation of the unit
+     */
     @Override
     public String toString() {
         return this.teamColor + " " + this.symbol;
