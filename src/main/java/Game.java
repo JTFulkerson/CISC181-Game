@@ -1,6 +1,5 @@
-
 /**
- * Name: BartSimpson
+ * Name: Game
  * Course: CISC 181-032L Spring 2023
  * University of Delaware
  * This program creates a class for a Game

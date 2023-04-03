@@ -22,7 +22,7 @@ public class BoardSquare {
      */
     public BoardSquare(String color) {
         this.squareColor = color;
-        empty = true;
+        this.empty = true;
     }
 
     // Accessors
