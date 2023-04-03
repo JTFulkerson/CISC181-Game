@@ -88,7 +88,7 @@ public abstract class Unit {
     }
 
     public char getSymbol() {
-        return symbol;
+        return this.symbol;
     }
 
     public void setSymbol(char symbol) {
@@ -96,7 +96,7 @@ public abstract class Unit {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -104,7 +104,7 @@ public abstract class Unit {
     }
 
     public double getHealth() {
-        return health;
+        return this.health;
     }
 
     public void setHealth(double health) {
@@ -112,7 +112,7 @@ public abstract class Unit {
     }
 
     public double getHealthModifier() {
-        return healthModifier;
+        return this.healthModifier;
     }
 
     public void setHealthModifier(double healthModifier) {
@@ -120,7 +120,7 @@ public abstract class Unit {
     }
 
     public double getDamage() {
-        return damage;
+        return this.damage;
     }
 
     public void setDamage(double damage) {
@@ -128,7 +128,7 @@ public abstract class Unit {
     }
 
     public double getDamageModifier() {
-        return damageModifier;
+        return this.damageModifier;
     }
 
     public void setDamageModifier(double damageModifier) {
@@ -136,7 +136,7 @@ public abstract class Unit {
     }
 
     public int getLuck() {
-        return luck;
+        return this.luck;
     }
 
     public void setLuck(int luck) {
@@ -144,7 +144,7 @@ public abstract class Unit {
     }
 
     public int getxCor() {
-        return xCor;
+        return this.xCor;
     }
 
     public void setxCor(int xCor) {
@@ -152,7 +152,7 @@ public abstract class Unit {
     }
 
     public int getyCor() {
-        return yCor;
+        return this.yCor;
     }
 
     public void setyCor(int yCor) {
@@ -160,7 +160,7 @@ public abstract class Unit {
     }
 
     public int getMovement() {
-        return movement;
+        return this.movement;
     }
 
     public void setMovement(int movement) {
@@ -168,7 +168,7 @@ public abstract class Unit {
     }
 
     public int getMovementModifier() {
-        return movementModifier;
+        return this.movementModifier;
     }
 
     public void setMovementModifier(int movementModifier) {
@@ -176,7 +176,7 @@ public abstract class Unit {
     }
 
     public String getTeamColor() {
-        return teamColor;
+        return this.teamColor;
     }
 
     public void setTeamColor(String teamColor) {
