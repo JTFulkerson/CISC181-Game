@@ -51,8 +51,8 @@ public class GameBoard {
      * @return boolean: true if in bounds, false if not
      */
     public boolean inBounds(int rowIndex, int columnIndex) {
-        return rowIndex >= 0 && rowIndex < this.squares.length && columnIndex >= 0
-                && columnIndex < this.squares[0].length;
+        return rowIndex >= 0 && rowIndex < numRows && columnIndex >= 0
+                && columnIndex < numColumns;
     }
 
     /**
