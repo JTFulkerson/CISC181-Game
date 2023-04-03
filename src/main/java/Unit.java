@@ -25,20 +25,6 @@ public abstract class Unit {
 
     /**
      * Default constructor
-     * 
-     * @param symbol           The text representation of the piece
-     * @param name             The units name
-     * @param health           The units base health
-     * @param healthModifier   Modifications to units health
-     * @param damage           The units base damage
-     * @param damageModifier   Modifications to units damage
-     * @param luck             Our random luck mechanism
-     * @param xCor             Current coord on x axis
-     * @param yCor             Current coord on y axis
-     * @param movement         Amount unit can move
-     * @param movementModifier Modifications to units movement
-     * @param teamColor        The teams color
-     * 
      */
     public Unit() {
         this.symbol = ' ';
