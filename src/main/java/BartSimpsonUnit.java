@@ -4,7 +4,7 @@
  * University of Delaware
  * This program creates a class for a Bart Simpson Unit
  *
- * @author Brandon Nauta
+ * @author Brandon Nauta and John Fulkerson
  * @since 03-22-2023
  * @version BartSimpsonUnit v2.0
  */

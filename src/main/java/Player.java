@@ -1,3 +1,15 @@
+
+/**
+ * Name: Player
+ * Course: CISC 181-032L Spring 2023
+ * University of Delaware
+ * This program creates a class for a Player
+ *
+ * @author Brandon Nauta and John Fulkerson
+ * @since 04-3-2023
+ * @version GameBoard v1.0
+ */
+
 import java.util.ArrayList;
 
 public class Player {
@@ -5,18 +17,34 @@ public class Player {
     private boolean isTurn;
     private Team team;
 
+    /*
+     * Default constructor
+     */
     public Player() {
         this.playerNumber = 0;
         this.isTurn = false;
         this.team = new Team("Unknown", new ArrayList<Unit>());
     }
 
+    /**
+     * Constructor with 2 parameters
+     * 
+     * @param playerNumber player number
+     * @param team         team
+     */
     public Player(int playerNumber, Team team) {
         this.playerNumber = playerNumber;
         this.isTurn = false;
         this.team = team;
     }
 
+    /**
+     * Constructor with 3 parameters
+     * 
+     * @param playerNumber player number
+     * @param isTurn       is turn
+     * @param team         team
+     */
     public Player(int playerNumber, boolean isTurn, Team team) {
         this.playerNumber = playerNumber;
         this.isTurn = isTurn;

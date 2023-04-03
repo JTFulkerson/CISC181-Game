@@ -4,19 +4,21 @@
  * University of Delaware
  * This program creates a class for a GameBoard
  *
- * @author Brandon Nauta
- * @since 03-22-2023
+ * @author Brandon Nauta and John Fulkerson
+ * @since 04-3-2023
  * @version GameBoard v1.0
  */
 public class GameBoard {
-    // Variables//
-
     private int numRows;
     private int numColumns;
     private BoardSquare[][] squares;
 
-    //////////
-
+    /**
+     * Constructor for GameBoard with 2 parameters
+     * 
+     * @param numRows    number of rows
+     * @param numColumns number of columns
+     */
     public GameBoard(int numRows, int numColumns) {
         this.numRows = numRows;
         this.numColumns = numColumns;
@@ -32,15 +34,30 @@ public class GameBoard {
         return numColumns;
     }
 
+    /**
+     * Returns the board squares
+     * 
+     * @return BoardSquare[][]: board squares
+     */
     public BoardSquare[][] getSquares() {
         return squares;
     }
 
+    /**
+     * Checks to see if a given row and column are in bounds
+     * 
+     * @param rowIndex    row index
+     * @param columnIndex column index
+     * @return boolean: true if in bounds, false if not
+     */
     public boolean inBounds(int rowIndex, int columnIndex) {
         return rowIndex >= 0 && rowIndex < this.squares.length && columnIndex >= 0
                 && columnIndex < this.squares[0].length;
     }
 
+    /**
+     * Sets up the empty board with white squares
+     */
     private void setUpEmptyBoard() {
         for (int i = 0; i < this.squares.length; i++) {
             for (int j = 0; j < this.squares[i].length; j++) {
@@ -49,6 +66,11 @@ public class GameBoard {
         }
     }
 
+    /**
+     * Finds a random empty space on the board
+     * 
+     * @return BoardSquare: random empty space
+     */
     public BoardSquare findRandomEmptySpace() {
         boolean emptySpace = false;
         int row = 0;
@@ -63,6 +85,11 @@ public class GameBoard {
         return squares[row][column];
     }
 
+    /**
+     * Returns the board as a string
+     * 
+     * @return String: board as a string
+     */
     @Override
     public String toString() {
         StringBuilder boardString = new StringBuilder();

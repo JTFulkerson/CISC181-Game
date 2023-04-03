@@ -1,3 +1,15 @@
+
+/**
+ * Name: Team
+ * Course: CISC 181-032L Spring 2023
+ * University of Delaware
+ * This program creates a class for a Team
+ *
+ * @author Brandon Nauta and John Fulkerson
+ * @since 04-3-2023
+ * @version GameBoard v1.0
+ */
+
 import java.util.ArrayList;
 
 public class Team {
@@ -34,6 +46,12 @@ public class Team {
         this.units.add(unit);
     }
 
+    /**
+     * This method returns the string representation of team color and the units of
+     * the team
+     * 
+     * @return String: team color and units
+     */
     @Override
     public String toString() {
         String unitString = "";

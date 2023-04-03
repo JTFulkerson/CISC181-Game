@@ -4,7 +4,7 @@
  * University of Delaware
  * This program...
  *
- * @author Brandon Nauta
+ * @author Brandon Nauta and John Fulkerson
  * @since 03-22-2023
  * @version Unit v1.0
  */

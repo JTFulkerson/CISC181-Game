@@ -1,5 +1,15 @@
+/**
+ * Name: BoardSquare
+ * Course: CISC 181-032L Spring 2023
+ * University of Delaware
+ * This program creates a class for a BoardSquare
+ *
+ * @author Brandon Nauta and John Fulkerson
+ * @since 04-3-2023
+ * @version GameBoard v1.0
+ */
+
 public class BoardSquare {
-    // Variables
     protected boolean empty;
     protected Unit unit;
     protected String squareColor;

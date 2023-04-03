@@ -4,19 +4,15 @@
  * University of Delaware
  * This program creates a class for a Tom Jerry Unit
  *
- * @author Brandon Nauta
+ * @author Brandon Nauta and John Fulkerson
  * @since 03-01-2023
  * @version TomJerryUnit v2.0
  */
 
 public class TomJerryUnit extends Unit {
-    // Variables//
-
     private boolean homingRocket; // Can use special attack "homing rocket"
     private boolean offerCheese; // Can use special ability "offer cheese"
     private boolean hiding; // Is the unit hidden on the board
-
-    ///////////////
 
     /**
      * This constructor accepts 14 parameters relating to the 14 private variable
