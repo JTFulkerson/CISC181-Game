@@ -61,7 +61,10 @@ public class GameBoard {
     private void setUpEmptyBoard() {
         for (int i = 0; i < this.squares.length; i++) {
             for (int j = 0; j < this.squares[i].length; j++) {
-                this.squares[i][j] = new BoardSquare("White");
+                if (i == 0 || i == this.squares.length - 1 || j == 0 || j == this.squares[i].length - 1) {
+                    this.squares[i][j] = new BoardSquare("Black");
+                } else
+                    this.squares[i][j] = new BoardSquare("White");
             }
         }
     }

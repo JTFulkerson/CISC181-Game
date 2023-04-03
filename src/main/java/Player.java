@@ -1,3 +1,4 @@
+
 /**
  * Name: Player
  * Course: CISC 181-032L Spring 2023
@@ -21,7 +22,7 @@ public class Player {
      */
     public Player() {
         this.playerNumber = 0;
-        this.isTurn = false;
+        this.isTurn = true;
         this.team = new Team("Unknown", new ArrayList<Unit>());
     }
 
@@ -66,11 +67,11 @@ public class Player {
         this.isTurn = isTurn;
     }
 
-    public Team getTeam() {
+    public Team getPlayersTeam() {
         return this.team;
     }
 
-    public void setTeam(Team team) {
+    public void setPlayersTeam(Team team) {
         this.team = team;
     }
 

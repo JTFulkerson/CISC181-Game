@@ -10,23 +10,23 @@ public class PlayerTest {
         Player player = new Player();
         assertEquals(0, player.getPlayerNumber());
         assertTrue(player.isTurn());
-        assertEquals("Unknown", player.getTeam().getTeamColor());
-        assertEquals(0, player.getTeam().getTeamUnits().size());
+        assertEquals("Unknown", player.getPlayersTeam().getTeamColor());
+        assertEquals(0, player.getPlayersTeam().getTeamUnits().size());
 
         System.out.println("");
         System.out.println("Testing Player constructor with 3 parameters");
         player = new Player(1, false, new Team("Red", new ArrayList<Unit>()));
         assertEquals(1, player.getPlayerNumber());
         assertFalse(player.isTurn());
-        assertEquals("Red", player.getTeam().getTeamColor());
-        assertEquals(0, player.getTeam().getTeamUnits().size());
+        assertEquals("Red", player.getPlayersTeam().getTeamColor());
+        assertEquals(0, player.getPlayersTeam().getTeamUnits().size());
 
         System.out.println("Testing Player constructor with 2 parameters");
         player = new Player(2, new Team("Blue", new ArrayList<Unit>()));
         assertEquals(2, player.getPlayerNumber());
         assertFalse(player.isTurn());
-        assertEquals("Blue", player.getTeam().getTeamColor());
-        assertEquals(0, player.getTeam().getTeamUnits().size());
+        assertEquals("Blue", player.getPlayersTeam().getTeamColor());
+        assertEquals(0, player.getPlayersTeam().getTeamUnits().size());
 
     }
 
