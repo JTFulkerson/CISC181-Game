@@ -1,6 +1,6 @@
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
 public class GameBoardTest {
 
@@ -56,7 +56,7 @@ public class GameBoardTest {
 
         // place some Units on the GameBoard
         Unit tj = new TomJerryUnit();
-        // testGameBoard.getGameBoard()[0][0].setUnit(tj);
+        testGameBoard.getSquares()[0][0].setUnit(tj);
 
         Unit bart = new BartSimpsonUnit();
         testGameBoard.getSquares()[numRows - 1][numCols - 1].setUnit(bart);

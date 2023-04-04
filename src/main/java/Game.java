@@ -13,7 +13,7 @@
 import java.util.Collections;
 
 public class Game {
-    private GameBoard gameBoard;
+    private GameBoard board;
     private Player player1;
     private Player player2;
 
@@ -24,12 +24,12 @@ public class Game {
      * @param numColumns number of columns
      */
     private void initializeGameBoard(int numRows, int numColumns) {
-        this.gameBoard = new GameBoard(numRows, numColumns);
+        this.board = new GameBoard(numRows, numColumns);
         for (int i = 0; i < this.player1.getPlayersTeam().getTeamUnits().size(); i++) {
-            this.gameBoard.findRandomEmptySpace().setUnit(this.player1.getPlayersTeam().getTeamUnits().get(i));
+            this.board.findRandomEmptySpace().setUnit(this.player1.getPlayersTeam().getTeamUnits().get(i));
         }
         for (int i = 0; i < this.player2.getPlayersTeam().getTeamUnits().size(); i++) {
-            this.gameBoard.findRandomEmptySpace().setUnit(this.player2.getPlayersTeam().getTeamUnits().get(i));
+            this.board.findRandomEmptySpace().setUnit(this.player2.getPlayersTeam().getTeamUnits().get(i));
         }
     }
 
@@ -54,8 +54,8 @@ public class Game {
      * 
      * @return GameBoard: game board
      */
-    public GameBoard getGameBoard() {
-        return this.gameBoard;
+    public GameBoard getBoard() {
+        return this.board;
     }
 
     /**
@@ -100,7 +100,7 @@ public class Game {
      * @return BoardSquare[][]: game board
      */
     public BoardSquare[][] getBoardSquares() {
-        return this.gameBoard.getSquares();
+        return this.board.getSquares();
     }
 
     /**
@@ -121,15 +121,16 @@ public class Game {
     public String toString() {
         StringBuilder retString = new StringBuilder();
         retString.append("Game Board:\n")
-                .append(String.join("", Collections.nCopies(10 + gameBoard.getNumColumns() * 8, "*")))
-                .append("\n" + getGameBoard().toString())
-                .append(String.join("", Collections.nCopies(10 + gameBoard.getNumColumns() * 8, "*")))
+                .append(String.join("", Collections.nCopies(10 + board.getNumColumns() * 8, "*")))
+                .append("\n" + getBoard().toString())
+                .append(String.join("", Collections.nCopies(10 + board.getNumColumns() * 8, "*")))
                 .append("\n" + getCurrentPlayer().getPlayersTeam().toString() + "\n")
-                .append(String.join("", Collections.nCopies(10 + gameBoard.getNumColumns() * 8, "*")))
+                .append(String.join("", Collections.nCopies(10 + board.getNumColumns() * 8, "*")))
                 .append("\n" + getOpponentPlayer().getPlayersTeam().toString() + "\n")
-                .append(String.join("", Collections.nCopies(10 + gameBoard.getNumColumns() * 8, "*")))
+                .append(String.join("", Collections.nCopies(10 + board.getNumColumns() * 8, "*")))
                 .append("\nIt is Player " + getCurrentPlayer().getPlayerNumber() + "'s ("
                         + getCurrentPlayer().getPlayersTeam().getTeamColor() + "'s) turn\n");
         return retString.toString();
     }
+
 }
