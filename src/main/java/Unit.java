@@ -24,24 +24,6 @@ public abstract class Unit {
     protected String teamColor; // The teams color
 
     /**
-     * Default constructor
-     */
-    public Unit() {
-        this.symbol = ' ';
-        this.name = " ";
-        this.health = 0;
-        this.healthModifier = 0;
-        this.damage = 0;
-        this.damageModifier = 0;
-        this.luck = 0;
-        this.xCor = 0;
-        this.yCor = 0;
-        this.movement = 0;
-        this.movementModifier = 0;
-        this.teamColor = " ";
-    }
-
-    /**
      * This constructor accepts 14 parameters
      * 
      * @param symbol           The text representation of the piece
