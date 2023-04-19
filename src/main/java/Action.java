@@ -25,4 +25,6 @@ public abstract class Action {
         this.rowIndexUnit = rowIndexUnit;
         this.columnIndexUnit = columnIndexUnit;
     }
+
+    public abstract void performAction();
 }
