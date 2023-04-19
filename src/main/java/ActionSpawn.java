@@ -17,6 +17,9 @@ public class ActionSpawn extends Action {
         super(game, rowIndexBoardSquare, columnIndexBoardSquare, rowIndexUnit, columnIndexUnit);
     }
 
+    /**
+     * This method executes the spawn action
+     */
     @Override
     public void performAction() {
         Unit fromUnit = this.game.getBoardSquares()[this.rowIndexBoardSquare][this.columnIndexBoardSquare].getUnit();
