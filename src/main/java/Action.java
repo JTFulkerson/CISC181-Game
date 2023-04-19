@@ -1,3 +1,14 @@
+/**
+ * Name: Action
+ * Course: CISC 181-032L Spring 2023
+ * University of Delaware
+ * This program creates a class for an Action that can be performed by a unit
+ *
+ * @author Brandon Nauta, John Fulkerson, and Seth Thompson
+ * @since 04-19-2023
+ * @version Recruiter v1.0
+ */
+
 public abstract class Action {
     protected Game game;
     protected int rowIndexBoardSquare; // from square

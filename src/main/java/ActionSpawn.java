@@ -1,3 +1,15 @@
+/**
+ * Name: ActionSpawn
+ * Course: CISC 181-032L Spring 2023
+ * University of Delaware
+ * This program creates a class for an ActionSpawn that can be performed by a
+ * unit. This class extends the Action class.
+ *
+ * @author Brandon Nauta, John Fulkerson, and Seth Thompson
+ * @since 04-19-2023
+ * @version ActionSpawn v1.0
+ */
+
 public class ActionSpawn extends Action {
 
     /**
