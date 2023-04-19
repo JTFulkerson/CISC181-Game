@@ -23,6 +23,9 @@ public class ActionRecruit extends Action {
         super(game, rowIndexBoardSquare, columnIndexBoardSquare, rowIndexUnit, columnIndexUnit);
     }
 
+    /**
+     * This method performs the recruit action
+     */
     @Override
     public void performAction () {
         this.game.getCurrentPlayer().getPlayersTeam().
