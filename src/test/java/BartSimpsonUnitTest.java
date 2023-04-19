@@ -96,7 +96,7 @@ public class BartSimpsonUnitTest {
         System.out.println("Creating Bart Simpson with 14 parameter constructor");
         System.out.println();
         BartSimpsonUnit bs2 = new BartSimpsonUnit('S', "Not Bart Simpson", 90.0, 5.0, 23.0, 5.0, 5, 10, 10, 2, 5, 5,
-                false, false, "Unknown");
+                false, false, "Unknown", 0);
         System.out.println();
         System.out.println("-- Testing Getters");
         System.out.println();
