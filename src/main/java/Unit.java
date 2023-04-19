@@ -2,7 +2,7 @@
  * Name: Unit
  * Course: CISC 181-032L Spring 2023
  * University of Delaware
- * This program...
+ * This program is the parent class for all units in the game
  *
  * @author Brandon Nauta and John Fulkerson
  * @since 03-22-2023
