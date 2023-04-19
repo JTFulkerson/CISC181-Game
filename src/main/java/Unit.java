@@ -162,4 +162,6 @@ public abstract class Unit {
     }
 
     public abstract Unit spawn();
+
+    public abstract boolean canSpawn();
 }

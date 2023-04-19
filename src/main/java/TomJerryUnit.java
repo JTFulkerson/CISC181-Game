@@ -111,4 +111,9 @@ public class TomJerryUnit extends Unit {
                 5, 5, 1, 0,
                 true, true, false, "Unknown");
     }
+
+    @Override
+    public boolean canSpawn() {
+        return true;
+    }
 }
