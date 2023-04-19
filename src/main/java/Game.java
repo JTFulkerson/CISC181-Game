@@ -5,9 +5,9 @@
  * University of Delaware
  * This program creates a class for a Game
  *
- * @author Brandon Nauta and John Fulkerson
+ * @author Brandon Nauta, John Fulkerson, and Seth Thompson
  * @since 04-3-2023
- * @version Game v1.0
+ * @version Game v2.0
  */
 
 import java.util.Collections;
@@ -110,6 +110,40 @@ public class Game {
         boolean tempTurn = player1.isTurn();
         player1.setTurn(player2.isTurn());
         player2.setTurn(tempTurn);
+    }
+
+    /**
+     * This method determines whether the game has a winner or a tie
+     * @return A boolean representing whether the game has a winner or not
+     */
+    public boolean isAWinner () {
+        if (this.player1.getPlayersTeam().getTeamUnits().size() == 0 &&
+                this.player2.getPlayersTeam().getTeamUnits().size() !=0) {
+            return true;
+        }
+        return this.player2.getPlayersTeam().getTeamUnits().size() == 0 &&
+                this.player1.getPlayersTeam().getTeamUnits().size() != 0;
+    }
+
+    /**
+     * This method determine which player won the game
+     * @return Player object representing the player who won the game
+     */
+    public Player getWinner () {
+        Player winner = this.player1;
+        if (this.player2.getPlayersTeam().getTeamUnits().size() > this.player1.getPlayersTeam().getTeamUnits().size()) {
+            winner = this.player2;
+        }
+        return winner;
+    }
+
+    /**
+     * This method determines whether the game has ended
+     * @return A boolean representing if the game ended
+     */
+    public boolean isGameEnded () {
+        return this.player1.getPlayersTeam().getTeamUnits().size() == 0 ||
+                this.player2.getPlayersTeam().getTeamUnits().size() == 0;
     }
 
     /**
