@@ -1,9 +1,9 @@
 public abstract class Action {
-    private Game game;
-    private int rowIndexBoardSquare; // from square
-    private int columnIndexBoardSquare; // from square
-    private int rowIndexUnit; // to square
-    private int columnIndexUnit; // to square
+    protected Game game;
+    protected int rowIndexBoardSquare; // from square
+    protected int columnIndexBoardSquare; // from square
+    protected int rowIndexUnit; // to square
+    protected int columnIndexUnit; // to square
 
     /**
      * The constructor for the Action class that accepts the parameters (Game) game,
