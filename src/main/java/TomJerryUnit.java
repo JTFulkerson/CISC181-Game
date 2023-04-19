@@ -4,12 +4,12 @@
  * University of Delaware
  * This program creates a class for a Tom Jerry Unit
  *
- * @author Brandon Nauta and John Fulkerson
+ * @author Brandon Nauta and John Fulkerson, and Seth Thompson
  * @since 03-01-2023
- * @version TomJerryUnit v2.0
+ * @version TomJerryUnit v3.0
  */
 
-public class TomJerryUnit extends Unit {
+public class TomJerryUnit extends Attacker {
     private boolean homingRocket; // Can use special attack "homing rocket"
     private boolean offerCheese; // Can use special ability "offer cheese"
     private boolean hiding; // Is the unit hidden on the board
@@ -33,12 +33,13 @@ public class TomJerryUnit extends Unit {
      * @param offerCheese      Can use special ability "offer cheese"
      * @param hiding           Is the unit hidden on the board
      * @param teamColor        The teams color
+     * @param numAttacks       The number of attacks
      */
     public TomJerryUnit(char symbol, String name, double health, double healthModifier, double damage,
             double damageModifier, int luck, int xCor, int yCor, int movement, int movementModifier,
-            boolean homingRocket, boolean offerCheese, boolean hiding, String teamColor) {
+            boolean homingRocket, boolean offerCheese, boolean hiding, String teamColor, int numAttacks) {
         super(symbol, name, health, healthModifier, damage,
-                damageModifier, luck, xCor, yCor, movement, movementModifier, teamColor);
+                damageModifier, luck, xCor, yCor, movement, movementModifier, teamColor, numAttacks);
         this.homingRocket = homingRocket;
         this.offerCheese = offerCheese;
         this.hiding = hiding;
@@ -52,7 +53,7 @@ public class TomJerryUnit extends Unit {
     public TomJerryUnit() {
         this('T', "Tom & Jerry", 100.0, 0.0, 25.0, 0.0, 0,
                 5, 5, 1, 0,
-                true, true, false, "Unknown");
+                true, true, false, "Unknown", 0);
     }
 
     public boolean canHomingRocket() {
@@ -107,9 +108,10 @@ public class TomJerryUnit extends Unit {
      */
     @Override
     public TomJerryUnit spawn() {
-        return new TomJerryUnit(Character.toLowerCase(symbol), "Tom & Jerry", 100.0, 0.0, 25.0, 0.0, 0,
-                5, 5, 1, 0,
-                true, true, false, "Unknown");
+        return new TomJerryUnit(Character.toLowerCase(symbol), "Tom & Jerry", 100.0, 0.0,
+                25.0, 0.0, 0,
+                5, 5, 1, 0, true, true, false,
+                "Unknown", 0);
     }
 
     @Override

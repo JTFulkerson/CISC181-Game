@@ -4,12 +4,12 @@
  * University of Delaware
  * This program creates a class for a Bart Simpson Unit
  *
- * @author Brandon Nauta and John Fulkerson
+ * @author Brandon Nauta and John Fulkerson, and Seth Thompson
  * @since 03-22-2023
- * @version BartSimpsonUnit v2.0
+ * @version BartSimpsonUnit v3.0
  */
 
-public class BartSimpsonUnit extends Unit {
+public class BartSimpsonUnit extends Recruiter {
     private int numTimesSpawned; // The number of times this piece has spawned
     private boolean distract; // Can use special ability distract
     private boolean recruit; // Can recruit other units
@@ -34,12 +34,13 @@ public class BartSimpsonUnit extends Unit {
      * @param distract         Can use special ability distract
      * @param recruit          Can recruit other units
      * @param teamColor        The teams color
+     * @param numRecruits      The number of recruits
      */
     public BartSimpsonUnit(char symbol, String name, double health, double healthModifier, double damage,
             double damageModifier, int luck, int xCor, int yCor, int movement, int movementModifier,
-            int numTimesSpawned, boolean distract, boolean recruit, String teamColor) {
+            int numTimesSpawned, boolean distract, boolean recruit, String teamColor, int numRecruits) {
         super(symbol, name, health, healthModifier, damage, damageModifier, luck, xCor, yCor,
-                movement, movementModifier, teamColor);
+                movement, movementModifier, teamColor, numRecruits);
         this.numTimesSpawned = numTimesSpawned;
         this.distract = distract;
         this.recruit = recruit;
@@ -53,7 +54,7 @@ public class BartSimpsonUnit extends Unit {
     public BartSimpsonUnit() {
         this('B', "Bart Simpson", 100.0, 0.0, 25.0, 0.0, 0,
                 5, 5, 1, 0, 0,
-                true, true, "Unknown");
+                true, true, "Unknown", 0);
     }
 
     public int getNumTimesSpawned() {
@@ -85,6 +86,8 @@ public class BartSimpsonUnit extends Unit {
      * 
      * @return Boolean representing whether a unit can spawn another unit
      */
+
+    @Override
     public boolean canSpawn() {
         return (this.symbol == Character.toUpperCase(symbol) && numTimesSpawned < MAX_NUM_SPAWNED);
     }
@@ -108,7 +111,7 @@ public class BartSimpsonUnit extends Unit {
         this.numTimesSpawned++;
         return new BartSimpsonUnit(this.symbol, "Bart Simpson", 100.0, 5.0,
                 25.0, 10.0, 0, 1, 1, 1, 1, 0,
-                true, true, "Unknown");
+                true, true, "Unknown", 0);
     }
 
 }
