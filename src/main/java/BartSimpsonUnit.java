@@ -13,7 +13,7 @@ public class BartSimpsonUnit extends Recruiter {
     private int numTimesSpawned; // The number of times this piece has spawned
     private boolean distract; // Can use special ability distract
     private boolean recruit; // Can recruit other units
-    final static int MAX_NUM_SPAWNED = 1; // The maximum number of times this piece can spawn
+    final static int MAX_NUM_SPAWNED = 2; // The maximum number of times this piece can spawn
 
     /**
      * This constructor accepts 14 parameters relating to the 14 private variable
