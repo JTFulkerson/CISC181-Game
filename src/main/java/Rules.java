@@ -5,8 +5,8 @@
  * This program creates the rules that allow move, spawn, recruit, and attack to be used
  *
  * @author Brandon Nauta, John Fulkerson and Seth Thompson
- * @since 04-19-2023
- * @version Rules v1.0
+ * @since 04-20-2023
+ * @version Rules v2.0
  */
 import java.util.ArrayList;
 
