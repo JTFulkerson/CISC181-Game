@@ -52,8 +52,9 @@ public class Rules {
                 // if the space the unit has to move to is empty
                 if (!gameBoard[unitRowTo][unitColumnTo].isEmpty() && !gameBoard[unitRowFrom][unitColumnFrom].isEmpty()) {
                     Unit fromSquareUnit = gameBoard[unitRowFrom][unitRowFrom].getUnit();
+                    Unit toSquareUnit = gameBoard[unitRowTo][unitRowTo].getUnit();
                     // if the To Square's Unit is on the other team
-                    if (!fromSquareUnit.getTeamColor().equals(game.getCurrentPlayer().getPlayersTeam().getTeamColor())) {
+                    if (!toSquareUnit.getTeamColor().equals(game.getCurrentPlayer().getPlayersTeam().getTeamColor())) {
                         //if the From Square's Unit is and instance of BartSimpsonUnit
                         if (fromSquareUnit instanceof BartSimpsonUnit) {
                             // if the From Square's Unit has the same color as the current team
@@ -74,8 +75,9 @@ public class Rules {
                 // if the space the unit has to move to is empty
                 if (!gameBoard[unitRowTo][unitColumnTo].isEmpty() && !gameBoard[unitRowFrom][unitColumnFrom].isEmpty()) {
                     Unit fromSquareUnit = gameBoard[unitRowFrom][unitRowFrom].getUnit();
+                    Unit toSquareUnit = gameBoard[unitRowTo][unitRowTo].getUnit();
                     // if the To Square's Unit is on the other team
-                    if (!fromSquareUnit.getTeamColor().equals(game.getCurrentPlayer().getPlayersTeam().getTeamColor())) {
+                    if (!toSquareUnit.getTeamColor().equals(game.getCurrentPlayer().getPlayersTeam().getTeamColor())) {
                         //if the From Square's Unit is and instance of TomJerryUnit
                         if (fromSquareUnit instanceof TomJerryUnit) {
                             // if the From Square's Unit has the same color as the current team
