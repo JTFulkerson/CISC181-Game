@@ -99,13 +99,13 @@ public class TextView {
     public void getNextPlayersAction(Game game) {
         Scanner scnr = new Scanner(System.in);
         this.actionType = getUsersNextActionType(scnr);
-        System.out.print("Row index of the 'from square'");
+        System.out.print("Row index of the 'from square'. ");
         this.rowIndexBoardSquareMakingAction = getValidInt(0, game.getBoardSquares().length - 1, scnr);
-        System.out.print("Column index of the 'from square'");
+        System.out.print("Column index of the 'from square'. ");
         this.columnIndexBoardSquareMakingAction = getValidInt(0, game.getBoardSquares()[0].length - 1, scnr);
-        System.out.print("Row index of the 'to square'");
+        System.out.print("Row index of the 'to square'. ");
         this.rowIndexBoardSquareReceivingAction = getValidInt(0, game.getBoardSquares().length - 1, scnr);
-        System.out.print("Column index of the 'to square'");
+        System.out.print("Column index of the 'to square'. ");
         this.columnIndexBoardSquareReceivingAction = getValidInt(0, game.getBoardSquares()[0].length - 1, scnr);
         scnr.close();
     }
