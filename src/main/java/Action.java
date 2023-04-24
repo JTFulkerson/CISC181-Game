@@ -6,7 +6,7 @@
  *
  * @author Brandon Nauta, John Fulkerson, and Seth Thompson
  * @since 04-19-2023
- * @version Recruiter v1.0
+ * @version Action v1.0
  */
 
 public abstract class Action {
