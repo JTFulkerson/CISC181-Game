@@ -40,10 +40,12 @@ public class ActionAttack extends Action {
                 ((TomJerryUnit) attackedUnit).takeDamage(((TomJerryUnit) attackingUnit).dealDamage());
                 if (attackedUnit.getHealth() <= 0.0) {
                     this.game.getBoardSquares()[this.rowIndexUnit][this.columnIndexUnit].removeUnit();
+                    this.game.getOpponentPlayer().getPlayersTeam().removeUnitsFromTeam(attackedUnit);
                     dead = true;
                 }
             }
             this.game.getBoardSquares()[this.rowIndexUnit][this.columnIndexUnit].removeUnit();
+            this.game.getOpponentPlayer().getPlayersTeam().removeUnitsFromTeam(attackedUnit);
             dead = true;
         }
         if (dead) {
