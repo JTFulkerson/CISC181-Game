@@ -11,15 +11,17 @@
 public class ActionRecruit extends Action {
 
     /**
-     * This constructor accepts 5 parameters relating to the super classes member fields
-     * @param game The game object
-     * @param rowIndexBoardSquare The row index of the board square
+     * This constructor accepts 5 parameters relating to the super classes member
+     * fields
+     * 
+     * @param game                   The game object
+     * @param rowIndexBoardSquare    The row index of the board square
      * @param columnIndexBoardSquare The column index of the board square
-     * @param rowIndexUnit The row index of the unit
-     * @param columnIndexUnit The column index of the unit
+     * @param rowIndexUnit           The row index of the unit
+     * @param columnIndexUnit        The column index of the unit
      */
-    public ActionRecruit (Game game, int rowIndexBoardSquare, int columnIndexBoardSquare, int rowIndexUnit,
-                       int columnIndexUnit) {
+    public ActionRecruit(Game game, int rowIndexBoardSquare, int columnIndexBoardSquare, int rowIndexUnit,
+            int columnIndexUnit) {
         super(game, rowIndexBoardSquare, columnIndexBoardSquare, rowIndexUnit, columnIndexUnit);
     }
 
@@ -27,13 +29,11 @@ public class ActionRecruit extends Action {
      * This method performs the recruit action
      */
     @Override
-    public void performAction () {
-        this.game.getCurrentPlayer().getPlayersTeam().
-                removeUnitsFromTeam(this.game.getBoardSquares()
-                        [this.rowIndexBoardSquare][this.columnIndexBoardSquare].getUnit());
-        this.game.getOpponentPlayer().getPlayersTeam().
-                addUnitsToTeam(this.game.getBoardSquares()
-                        [this.rowIndexBoardSquare][this.columnIndexBoardSquare].getUnit());
+    public void performAction() {
+        this.game.getCurrentPlayer().getPlayersTeam().removeUnitsFromTeam(
+                this.game.getBoardSquares()[this.rowIndexBoardSquare][this.columnIndexBoardSquare].getUnit());
+        this.game.getOpponentPlayer().getPlayersTeam().addUnitsToTeam(
+                this.game.getBoardSquares()[this.rowIndexBoardSquare][this.columnIndexBoardSquare].getUnit());
         this.game.changeTurn();
     }
 }

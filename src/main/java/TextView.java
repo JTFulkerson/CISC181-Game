@@ -82,7 +82,6 @@ public class TextView {
                     System.out.println("Not in range");
                 }
             } else {
-                scnr.next(); // clears out scanners current value
                 System.out.println("Invalid Input");
             }
         }

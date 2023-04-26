@@ -11,15 +11,17 @@
 public class ActionMove extends Action {
 
     /**
-     * This constructor accepts 5 parameters relating to the super classes member fields
-     * @param game The game object
-     * @param rowIndexBoardSquare The row index of the board square
+     * This constructor accepts 5 parameters relating to the super classes member
+     * fields
+     * 
+     * @param game                   The game object
+     * @param rowIndexBoardSquare    The row index of the board square
      * @param columnIndexBoardSquare The column index of the board square
-     * @param rowIndexUnit The row index of the unit
-     * @param columnIndexUnit The column index of the unit
+     * @param rowIndexUnit           The row index of the unit
+     * @param columnIndexUnit        The column index of the unit
      */
-    public ActionMove (Game game, int rowIndexBoardSquare, int columnIndexBoardSquare, int rowIndexUnit,
-                  int columnIndexUnit) {
+    public ActionMove(Game game, int rowIndexBoardSquare, int columnIndexBoardSquare, int rowIndexUnit,
+            int columnIndexUnit) {
         super(game, rowIndexBoardSquare, columnIndexBoardSquare, rowIndexUnit, columnIndexUnit);
     }
 
@@ -27,8 +29,9 @@ public class ActionMove extends Action {
      * This method executes the move action
      */
     @Override
-    public void performAction () {
-        Unit currentUnit = this.game.getBoardSquares()[this.rowIndexBoardSquare][this.columnIndexBoardSquare].removeUnit();
+    public void performAction() {
+        Unit currentUnit = this.game.getBoardSquares()[this.rowIndexBoardSquare][this.columnIndexBoardSquare]
+                .removeUnit();
         this.game.getBoardSquares()[this.rowIndexUnit][this.columnIndexUnit].setUnit(currentUnit);
         this.game.changeTurn();
     }

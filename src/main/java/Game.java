@@ -114,11 +114,12 @@ public class Game {
 
     /**
      * This method determines whether the game has a winner or a tie
+     * 
      * @return A boolean representing whether the game has a winner or not
      */
-    public boolean isAWinner () {
+    public boolean isAWinner() {
         if (this.player1.getPlayersTeam().getTeamUnits().size() == 0 &&
-                this.player2.getPlayersTeam().getTeamUnits().size() !=0) {
+                this.player2.getPlayersTeam().getTeamUnits().size() != 0) {
             return true;
         }
         return this.player2.getPlayersTeam().getTeamUnits().size() == 0 &&
@@ -127,9 +128,10 @@ public class Game {
 
     /**
      * This method determine which player won the game
+     * 
      * @return Player object representing the player who won the game
      */
-    public Player getWinner () {
+    public Player getWinner() {
         Player winner = this.player1;
         if (this.player2.getPlayersTeam().getTeamUnits().size() > this.player1.getPlayersTeam().getTeamUnits().size()) {
             winner = this.player2;
@@ -139,9 +141,10 @@ public class Game {
 
     /**
      * This method determines whether the game has ended
+     * 
      * @return A boolean representing if the game ended
      */
-    public boolean isGameEnded () {
+    public boolean isGameEnded() {
         return this.player1.getPlayersTeam().getTeamUnits().size() == 0 ||
                 this.player2.getPlayersTeam().getTeamUnits().size() == 0;
     }
