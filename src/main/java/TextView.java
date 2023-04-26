@@ -106,7 +106,7 @@ public class TextView {
         this.rowIndexBoardSquareReceivingAction = getValidInt(0, game.getBoardSquares().length - 1, scnr);
         System.out.print("Column index of the 'to square'. ");
         this.columnIndexBoardSquareReceivingAction = getValidInt(0, game.getBoardSquares()[0].length - 1, scnr);
-        scnr.close();
+
     }
 
     /**
