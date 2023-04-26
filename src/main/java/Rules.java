@@ -18,10 +18,10 @@ public class Rules {
         if (game.getBoard().inBounds(unitRowTo, unitColumnTo)
                 && game.getBoard().inBounds(unitRowFrom, unitColumnFrom)) {
             BoardSquare[][] gameBoard = game.getBoard().getSquares();
-            if (action == 'M') {
-                if (!gameBoard[unitRowFrom][unitColumnFrom].isEmpty()) {
-                    if (gameBoard[unitRowFrom][unitColumnFrom].getUnit().teamColor
-                            .equals(game.getCurrentPlayer().getPlayersTeam().getTeamColor())) {
+            if (!gameBoard[unitRowFrom][unitColumnFrom].isEmpty()) {
+                if (gameBoard[unitRowFrom][unitColumnFrom].getUnit().teamColor
+                        .equals(game.getCurrentPlayer().getPlayersTeam().getTeamColor())) {
+                    if (action == 'M') {
                         if (gameBoard[unitRowTo][unitColumnTo].isEmpty()) {
                             if (gameBoard[unitRowFrom][unitColumnFrom].getUnit().validMovePath(unitRowFrom,
                                     unitColumnFrom, unitRowTo, unitColumnTo)) {
@@ -32,118 +32,69 @@ public class Rules {
                         } else {
                             System.out.println("The to square must be empty!");
                         }
-                    } else {
-                        System.out.println("The unit being moved must be on the "
-                                + game.getCurrentPlayer().getPlayersTeam().getTeamColor() + " team!");
-                    }
-                } else {
-                    System.out.println("The from square must have a unit!");
-                }
-            } else if (action == 'S') {
-                // if the space the unit has to move to is empty
-                if (gameBoard[unitRowTo][unitColumnTo].isEmpty() && !gameBoard[unitRowFrom][unitColumnFrom].isEmpty()) {
-                    Unit fromSquareUnit = gameBoard[unitRowFrom][unitRowFrom].getUnit();
-                    // if the current Unit is and instance of Unit
-                    if (fromSquareUnit instanceof BartSimpsonUnit) {
-                        // if the current unit has the same color as the current team
-                        if (fromSquareUnit.getTeamColor()
-                                .equals(game.getCurrentPlayer().getPlayersTeam().getTeamColor())) {
-                            // if validMovePath is true
-                            if (fromSquareUnit.validSpawnPath(unitRowFrom, unitColumnFrom, unitRowTo, unitColumnTo)) {
-                                // if the unit canSpawn
-                                if (fromSquareUnit.canSpawn()) {
-                                    isValidAction = true;
-                                } else {
-                                    System.out.println("The unit must be able to spawn!");
-                                }
+                    } else if (action == 'S') {
+                        if (gameBoard[unitRowTo][unitColumnTo].isEmpty()) {
+                            if (gameBoard[unitRowFrom][unitColumnFrom].getUnit().validSpawnPath(unitRowFrom,
+                                    unitColumnFrom, unitRowTo, unitColumnTo)) {
+                                isValidAction = true;
                             } else {
-                                System.out.println("The validSpawnPath must be true!");
+                                System.out.println("The unit must be able to spawn, your path is blocked!");
                             }
                         } else {
-                            System.out.println("From Square's unit has to be on the " + fromSquareUnit.getTeamColor()
-                                    + " player's team!");
+                            System.out.println("The to square must be empty!");
                         }
-                    } else {
-                        System.out.println("In order to attack the from Square unit needs to be a BartSimpsonUnit (B)");
-                    }
-                } else {
-                    System.out.println("The from Square must have a unit, and the to square must not have a unit.");
-                }
-            } else if (action == 'R') {
-                // if the space the unit has to move to is empty
-                if (!(gameBoard[unitRowTo][unitColumnTo].isEmpty()
-                        && gameBoard[unitRowFrom][unitColumnFrom].isEmpty())) {
-                    Unit fromSquareUnit = gameBoard[unitRowFrom][unitRowFrom].getUnit();
-                    Unit toSquareUnit = gameBoard[unitRowTo][unitRowTo].getUnit();
-                    // if the To Square's Unit is on the other team
-                    if (!toSquareUnit.getTeamColor().equals(game.getCurrentPlayer().getPlayersTeam().getTeamColor())) {
-                        // if the From Square's Unit is and instance of BartSimpsonUnit
-                        if (fromSquareUnit instanceof BartSimpsonUnit) {
-                            // if the From Square's Unit has the same color as the current team
-                            if (fromSquareUnit.getTeamColor()
-                                    .equals(game.getCurrentPlayer().getPlayersTeam().getTeamColor())) {
-                                // if validMovePath is true
-                                if (((BartSimpsonUnit) fromSquareUnit).validRecruitPath(unitRowFrom, unitColumnFrom,
-                                        unitRowTo, unitColumnTo)) {
-                                    // if the unit canRecruit
-                                    if (((BartSimpsonUnit) fromSquareUnit).canRecruit()) {
+                    } else if (action == 'R') {
+                        // Checks to see if unit is of type BartSimpsonUnit
+                        if (gameBoard[unitRowFrom][unitColumnFrom].getUnit() instanceof BartSimpsonUnit) {
+                            if (!gameBoard[unitRowTo][unitColumnTo].isEmpty()) {
+                                if (!gameBoard[unitRowTo][unitColumnTo].getUnit().getTeamColor()
+                                        .equals(gameBoard[unitRowFrom][unitColumnFrom].getUnit().getTeamColor())) {
+                                    if (((BartSimpsonUnit) (gameBoard[unitRowFrom][unitColumnFrom].getUnit()))
+                                            .validRecruitPath(unitRowFrom,
+                                                    unitColumnFrom, unitRowTo, unitColumnTo)) {
                                         isValidAction = true;
                                     } else {
-                                        System.out.println("The from Square unit must be able to recruit!");
+                                        System.out.println(
+                                                "The from unit must be able to recruit or your path is blocked!");
                                     }
                                 } else {
-                                    System.out.println("The validRecruitPath must be true!");
+                                    System.out.println("The to square must have an enemy unit!");
                                 }
                             } else {
-                                System.out.println("From Square's unit has to be on the "
-                                        + fromSquareUnit.getTeamColor() + " player's team!");
+                                System.out.println("The to square must have a unit!");
                             }
                         } else {
-                            System.out.println(
-                                    "In order to attack the from Square unit needs to be a BartSimpsonUnit (B)");
+                            System.out.println("The unit must be of type BartSimpsonUnit!");
                         }
-                    } else {
-                        System.out.println("The toSquare's unit needs to be on the" + fromSquareUnit.getTeamColor()
-                                + " player's team!!");
-                    }
-                } else {
-                    System.out.println("The coordinates you entered need to contain units.");
-                }
-            } else if (action == 'A') {
-                // the toSquare and fromSquare are not empty
-                if (!(gameBoard[unitRowTo][unitColumnTo].isEmpty()
-                        && gameBoard[unitRowFrom][unitColumnFrom].isEmpty())) {
-                    Unit fromSquareUnit = gameBoard[unitRowFrom][unitRowFrom].getUnit();
-                    Unit toSquareUnit = gameBoard[unitRowTo][unitRowTo].getUnit();
-                    // if the To Square's Unit is on the other team
-                    if (!toSquareUnit.getTeamColor().equals(game.getCurrentPlayer().getPlayersTeam().getTeamColor())) {
-                        // if the From Square's Unit is and instance of TomJerryUnit
-                        if (fromSquareUnit instanceof TomJerryUnit) {
-                            // if the From Square's Unit has the same color as the current team
-                            if (fromSquareUnit.getTeamColor()
-                                    .equals(game.getCurrentPlayer().getPlayersTeam().getTeamColor())) {
-                                // if validAttackPath is true
-                                if (((TomJerryUnit) fromSquareUnit).validAttackPath(unitRowFrom, unitColumnFrom,
-                                        unitRowTo, unitColumnTo)) {
-                                    isValidAction = true;
+                    } else if (action == 'A') {
+                        if (gameBoard[unitRowFrom][unitColumnFrom].getUnit() instanceof TomJerryUnit) {
+                            if (!gameBoard[unitRowTo][unitColumnTo].isEmpty()) {
+                                if (!gameBoard[unitRowTo][unitColumnTo].getUnit().getTeamColor()
+                                        .equals(gameBoard[unitRowFrom][unitColumnFrom].getUnit().getTeamColor())) {
+                                    if (((TomJerryUnit) (gameBoard[unitRowFrom][unitColumnFrom].getUnit()))
+                                            .validAttackPath(unitRowFrom,
+                                                    unitColumnFrom, unitRowTo, unitColumnTo)) {
+                                        isValidAction = true;
+                                    } else {
+                                        System.out.println(
+                                                "The from unit must be able to attack or your path is blocked!");
+                                    }
                                 } else {
-                                    System.out.println("The validAttackPath must be true!");
+                                    System.out.println("The to square must have an enemy unit!");
                                 }
                             } else {
-                                System.out.println("From Square's unit has to be on the "
-                                        + fromSquareUnit.getTeamColor() + " player's team!");
+                                System.out.println("The to square must have a unit!");
                             }
                         } else {
-                            System.out
-                                    .println("In order to attack the from Square unit needs to be a TomJerryUnit (T)");
+                            System.out.println("The unit must be of type TomJerryUnit!");
                         }
-                    } else {
-                        System.out.println("The toSquare's unit needs to be on the" + fromSquareUnit.getTeamColor()
-                                + " player's team!!");
                     }
                 } else {
-                    System.out.println("The coordinates you entered need to contain units.");
+                    System.out.println("The unit on the from square must be on the "
+                            + game.getCurrentPlayer().getPlayersTeam().getTeamColor() + " team!");
                 }
+            } else {
+                System.out.println("The from square must have a unit!");
             }
         }
         return isValidAction;
