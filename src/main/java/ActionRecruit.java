@@ -30,9 +30,9 @@ public class ActionRecruit extends Action {
      */
     @Override
     public void performAction() {
-        this.game.getCurrentPlayer().getPlayersTeam().removeUnitsFromTeam(
+        this.game.getOpponentPlayer().getPlayersTeam().removeUnitsFromTeam(
                 this.game.getBoardSquares()[this.rowIndexBoardSquare][this.columnIndexBoardSquare].getUnit());
-        this.game.getOpponentPlayer().getPlayersTeam().addUnitsToTeam(
+        this.game.getCurrentPlayer().getPlayersTeam().addUnitsToTeam(
                 this.game.getBoardSquares()[this.rowIndexBoardSquare][this.columnIndexBoardSquare].getUnit());
         this.game.changeTurn();
     }

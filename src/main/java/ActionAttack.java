@@ -49,9 +49,8 @@ public class ActionAttack extends Action {
             dead = true;
         }
         if (dead) {
-            ActionMove move = new ActionMove(this.game, this.rowIndexBoardSquare, this.columnIndexBoardSquare,
-                    this.rowIndexUnit, this.columnIndexUnit);
-            move.performAction();
+            this.game.getBoardSquares()[this.rowIndexBoardSquare][this.columnIndexBoardSquare].removeUnit();
+            this.game.getBoardSquares()[this.rowIndexUnit][this.columnIndexUnit].setUnit(attackingUnit);
         }
         this.game.changeTurn();
     }
