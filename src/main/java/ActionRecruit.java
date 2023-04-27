@@ -30,10 +30,12 @@ public class ActionRecruit extends Action {
      */
     @Override
     public void performAction() {
-        this.game.getOpponentPlayer().getPlayersTeam().removeUnitsFromTeam(
-                this.game.getBoardSquares()[this.rowIndexBoardSquare][this.columnIndexBoardSquare].getUnit());
-        this.game.getCurrentPlayer().getPlayersTeam().addUnitsToTeam(
-                this.game.getBoardSquares()[this.rowIndexBoardSquare][this.columnIndexBoardSquare].getUnit());
+        Unit recruited = this.game.getBoardSquares()[rowIndexUnit][columnIndexUnit].getUnit();
+        this.game.getOpponentPlayer().getPlayersTeam().removeUnitsFromTeam(recruited);
+        this.game.getBoardSquares()[rowIndexUnit][columnIndexUnit].removeUnit();
+        recruited.setTeamColor(this.game.getCurrentPlayer().getPlayersTeam().getTeamColor());
+        this.game.getCurrentPlayer().getPlayersTeam().addUnitsToTeam(recruited);
+        this.game.getBoardSquares()[rowIndexUnit][columnIndexUnit].setUnit(recruited);
         this.game.changeTurn();
     }
 }
