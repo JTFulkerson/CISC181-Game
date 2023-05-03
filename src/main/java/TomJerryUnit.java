@@ -118,4 +118,49 @@ public class TomJerryUnit extends Attacker {
     public boolean canSpawn() {
         return true;
     }
+
+    /**
+     * TomJerryUnit can move anywhere on the board
+     * 
+     * @param fromSquareRow    The row of the square the unit is on
+     * @param fromSquareColumn The column of the square the unit is on
+     * @param toSquareRow      The row of the square the unit is moving to
+     * @param toSquareColumn   The column of the square the unit is moving to
+     * @return Always returns true
+     */
+    @Override
+    public boolean validMovePath(int fromSquareRow, int fromSquareColumn, int toSquareRow, int toSquareColumn) {
+        return true;
+    }
+
+    /**
+     * Limits attack to only two spaces up or down the column but no spaces
+     * across the row
+     * 
+     * @param fromSquareRow    The row of the square the unit is on
+     * @param fromSquareColumn The column of the square the unit is on
+     * @param toSquareRow      The row of the square the unit is attacking
+     * @param toSquareColumn   The column of the square the unit is attacking
+     * @return True if the attack is valid, false otherwise
+     */
+    @Override
+    public boolean validAttackPath(int fromSquareRow, int fromSquareColumn, int toSquareRow,
+            int toSquareColumn) {
+        return (Math.abs(fromSquareRow - toSquareRow) <= 2 && fromSquareColumn == toSquareColumn);
+    }
+
+    /**
+     * TomJerryUnit can spawn anywhere on the board
+     * 
+     * @param fromSquareRow    The row of the square the unit is on
+     * @param fromSquareColumn The column of the square the unit is on
+     * @param toSquareRow      The row of the square the unit is spawning to
+     * @param toSquareColumn   The column of the square the unit is spawning to
+     * @return Always returns true
+     */
+    @Override
+    public boolean validSpawnPath(int fromSquareRow, int fromSquareColumn, int toSquareRow,
+            int toSquareColumn) {
+        return true;
+    }
 }
