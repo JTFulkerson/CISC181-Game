@@ -83,6 +83,7 @@ public class TextView {
                 }
             } else {
                 System.out.println("Invalid Input");
+                scnr.next();
             }
         }
         return input;
