@@ -1,6 +1,4 @@
 # Individual Assignment
-/src/main/java/GameEventsLinkedList.java
-/src/test/java/GameEventsLinkedListTest.java
 
 # From https://github.com/github/gitignore/blob/master/Gradle.gitignore
 .gradle
