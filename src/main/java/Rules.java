@@ -93,6 +93,12 @@ public class Rules {
                             System.out.println("The unit must be of type TomJerryUnit!");
                         }
                     }
+                    else if (action == 'T') {
+                        if (gameBoard[unitRowTo][unitColumnTo].getUnit().teamColor.equals(
+                                game.getCurrentPlayer().getPlayersTeam().getTeamColor())) {
+                            isValidAction = true;
+                        }
+                    }
                 } else {
                     System.out.println("The unit on the from square must be on the "
                             + game.getCurrentPlayer().getPlayersTeam().getTeamColor() + " team!");

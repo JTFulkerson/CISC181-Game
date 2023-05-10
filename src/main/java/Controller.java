@@ -81,6 +81,10 @@ public class Controller {
             ActionAttack attack = new ActionAttack(this.game, fromSquareRow, fromSquareColumn, toSquareRow,
                     toSquareColumn);
             attack.performAction();
+        } else if (action == 'T') {
+            ActionTrade trade = new ActionTrade(this.game, fromSquareRow, fromSquareColumn, toSquareRow,
+                    toSquareColumn);
+            trade.performAction();
         }
         GameEventNode theGameEventNode = new GameEventNode(
                 new GameEvent(this.game.getCurrentPlayer().getPlayerNumber(), action + "",
