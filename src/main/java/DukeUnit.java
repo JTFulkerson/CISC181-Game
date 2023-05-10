@@ -11,27 +11,39 @@
 
 public class DukeUnit extends King {
 
-    public DukeUnit (char symbol, String name, double health, double healthModifier, double damage,
-                     double damageModifier, int luck, int xCor, int yCor, int movement, int movementModifier,
-                     String teamColor, int numAttacks, int numRecruits, int numTimesSpawned) {
+    public DukeUnit(char symbol, String name, double health, double healthModifier, double damage,
+            double damageModifier, int luck, int xCor, int yCor, int movement, int movementModifier,
+            String teamColor, int numAttacks, int numRecruits, int numTimesSpawned) {
         super(symbol, name, health, healthModifier, damage,
-                damageModifier, luck, xCor, yCor, movement, movementModifier, teamColor, numAttacks, numRecruits, numTimesSpawned);
+                damageModifier, luck, xCor, yCor, movement, movementModifier, teamColor, numAttacks, numRecruits,
+                numTimesSpawned);
     }
 
-    public DukeUnit () {
+    public DukeUnit() {
         this('D', "Duke", 150.0, 0.0, 30.0, 0.0, 0, 5,
                 5, 1, 0, "Unknown", 0, 0, 0);
     }
 
     @Override
-    public DukeUnit spawn () {
+    public DukeUnit spawn() {
         return new DukeUnit(Character.toLowerCase(super.symbol), "Duke", 150.0, 0.0,
                 30.0, 0.0, 0, 5, 5, 1, 0,
                 "Unknown", 0, 0, 0);
     }
 
     @Override
-    public boolean canSpawn () {
+    public boolean canSpawn() {
+        return true;
+    }
+
+    @Override
+    public boolean validMovePath(int fromSquareRow, int fromSquareColumn, int toSquareRow, int toSquareColumn) {
+        return true;
+    }
+
+    @Override
+    public boolean validSpawnPath(int fromSquareRow, int fromSquareColumn, int toSquareRow,
+            int toSquareColumn) {
         return true;
     }
 
