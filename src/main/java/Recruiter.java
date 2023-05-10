@@ -56,8 +56,6 @@ public abstract class Recruiter extends Unit {
      * @param columnIndexUnit
      * @return boolean: true if the unit can recruit another unit
      */
-    public boolean validRecruitPath(int rowIndexBoardSquare, int columnIndexBoardSquare, int rowIndexUnit,
-            int columnIndexUnit) {
-        return true;
-    }
+    public abstract boolean validRecruitPath(int rowIndexBoardSquare, int columnIndexBoardSquare, int rowIndexUnit,
+            int columnIndexUnit);
 }

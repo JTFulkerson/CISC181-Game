@@ -102,4 +102,52 @@ public class BartSimpsonUnit extends Recruiter {
                 25.0, 10.0, 0, 1, 1, 1, 1, 0,
                 true, true, this.teamColor, 0);
     }
+
+    /**
+     * BartSimpsonUnit can move any number of spaces up and down the column but no
+     * spaces across the row
+     * 
+     * @param fromSquareRow    The row of the square the unit is on
+     * @param fromSquareColumn The column of the square the unit is on
+     * @param toSquareRow      The row of the square the unit is moving to
+     * @param toSquareColumn   The column of the square the unit is moving to
+     * @return True if the unit can move to the square, false otherwise
+     */
+    @Override
+    public boolean validMovePath(int fromSquareRow, int fromSquareColumn, int toSquareRow, int toSquareColumn) {
+        return (fromSquareColumn == toSquareColumn && fromSquareRow != toSquareRow);
+    }
+
+    /**
+     * BartSimpsonUnit can recruit any number of spaces up and down the column but
+     * no spaces across the row
+     * 
+     * @param fromSquareRow    The row of the square the unit is on
+     * @param fromSquareColumn The column of the square the unit is on
+     * @param toSquareRow      The row of the square the unit is attacking
+     * @param toSquareColumn   The column of the square the unit is attacking
+     * @return True if the unit can recruit the square, false otherwise
+     */
+    @Override
+    public boolean validRecruitPath(int fromSquareRow, int fromSquareColumn, int toSquareRow,
+            int toSquareColumn) {
+        return (fromSquareColumn == toSquareColumn && fromSquareRow != toSquareRow);
+    }
+
+    /**
+     * BartSimpsonUnit can attack any number of spaces up and down the column but no
+     * spaces across the row
+     * 
+     * @param fromSquareRow    The row of the square the unit is on
+     * @param fromSquareColumn The column of the square the unit is on
+     * @param toSquareRow      The row of the square the unit is attacking
+     * @param toSquareColumn   The column of the square the unit is attacking
+     * @return True if the unit can attack the square, false otherwise
+     */
+    @Override
+    public boolean validSpawnPath(int fromSquareRow, int fromSquareColumn, int toSquareRow,
+            int toSquareColumn) {
+        return (fromSquareColumn == toSquareColumn && fromSquareRow != toSquareRow);
+    }
+
 }

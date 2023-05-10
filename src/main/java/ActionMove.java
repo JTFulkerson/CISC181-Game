@@ -35,4 +35,16 @@ public class ActionMove extends Action {
         this.game.getBoardSquares()[this.rowIndexUnit][this.columnIndexUnit].setUnit(currentUnit);
         this.game.changeTurn();
     }
+
+    @Override
+    public String toString() {
+
+        return game.getCurrentPlayer().getPlayersTeam().getTeamColor() + " teams "
+                + game.getBoardSquares()[this.rowIndexBoardSquare][this.columnIndexBoardSquare]
+                        .getUnit().getName()
+                + " unit moves from " + this.rowIndexUnit + "," + this.columnIndexUnit + " to "
+                + this.rowIndexBoardSquare + ","
+                + this.columnIndexBoardSquare;
+
+    }
 }

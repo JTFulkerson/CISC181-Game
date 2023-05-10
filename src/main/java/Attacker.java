@@ -57,8 +57,6 @@ public abstract class Attacker extends Unit {
      * @param columnIndexUnit
      * @return boolean: true if the unit can attack another unit
      */
-    public boolean validAttackPath(int rowIndexBoardSquare, int columnIndexBoardSquare, int rowIndexUnit,
-            int columnIndexUnit) {
-        return true;
-    }
+    public abstract boolean validAttackPath(int rowIndexBoardSquare, int columnIndexBoardSquare, int rowIndexUnit,
+            int columnIndexUnit);
 }

@@ -40,4 +40,16 @@ public class ActionSpawn extends Action {
         this.game.getBoardSquares()[this.rowIndexUnit][this.columnIndexUnit].setUnit(newUnit);
         this.game.changeTurn();
     }
+
+    @Override
+    public String toString() {
+
+        return game.getCurrentPlayer().getPlayersTeam().getTeamColor() + " teams "
+                + game.getBoardSquares()[this.rowIndexBoardSquare][this.columnIndexBoardSquare]
+                        .getUnit().getName()
+                + " unit spawns from " + this.rowIndexUnit + "," + this.columnIndexUnit + " to "
+                + this.rowIndexBoardSquare + ","
+                + this.columnIndexBoardSquare;
+
+    }
 }
