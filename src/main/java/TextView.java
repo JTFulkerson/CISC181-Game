@@ -127,7 +127,7 @@ public class TextView {
      */
     public void printEndOfGameMessage(Game game) {
         System.out.println("Game Over");
-        System.out.println("Player number " + game.getWinner().getPlayerNumber()
-                + game.getWinner().getPlayersTeam().getTeamColor() + " on the " + "team wins!");
+        System.out.println("Player number " + game.getWinner().getPlayerNumber() + " on the "
+                + game.getWinner().getPlayersTeam().getTeamColor() + " team wins!");
     }
 }
