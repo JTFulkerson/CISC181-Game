@@ -38,4 +38,16 @@ public class ActionRecruit extends Action {
         this.game.getBoardSquares()[rowIndexUnit][columnIndexUnit].setUnit(recruited);
         this.game.changeTurn();
     }
+
+    @Override
+    public String toString() {
+
+        return game.getCurrentPlayer().getPlayersTeam().getTeamColor() + " teams "
+                + game.getBoardSquares()[this.rowIndexBoardSquare][this.columnIndexBoardSquare]
+                        .getUnit().getName()
+                + " unit recruits from " + this.rowIndexUnit + "," + this.columnIndexUnit + " to "
+                + this.rowIndexBoardSquare + ","
+                + this.columnIndexBoardSquare;
+
+    }
 }
