@@ -44,9 +44,11 @@ public class ActionAttack extends Action {
                     dead = true;
                 }
             }
-            this.game.getBoardSquares()[this.rowIndexUnit][this.columnIndexUnit].removeUnit();
-            this.game.getOpponentPlayer().getPlayersTeam().removeUnitsFromTeam(attackedUnit);
-            dead = true;
+            else {
+                this.game.getBoardSquares()[this.rowIndexUnit][this.columnIndexUnit].removeUnit();
+                this.game.getOpponentPlayer().getPlayersTeam().removeUnitsFromTeam(attackedUnit);
+                dead = true;
+            }
         }
         if (dead) {
             this.game.getBoardSquares()[this.rowIndexBoardSquare][this.columnIndexBoardSquare].removeUnit();
