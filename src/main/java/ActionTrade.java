@@ -19,14 +19,17 @@ public class ActionTrade extends Action {
     public void performAction () {
         Unit toSquareUnit = this.game.getBoardSquares()[rowIndexBoardSquare][columnIndexBoardSquare].getUnit();
         Unit fromSquareunit = this.game.getBoardSquares()[rowIndexUnit][columnIndexUnit].getUnit();
+        Team currentTeam = this.game.getCurrentPlayer().getPlayersTeam();
         DukeUnit newUnit = new DukeUnit();
+        newUnit.setTeamColor(currentTeam.getTeamColor());
+
         this.game.getBoardSquares()[rowIndexBoardSquare][columnIndexBoardSquare].removeUnit();
         this.game.getBoardSquares()[rowIndexUnit][columnIndexUnit].removeUnit();
         this.game.getBoardSquares()[rowIndexUnit][columnIndexUnit].setUnit(newUnit);
 
-        this.game.getCurrentPlayer().getPlayersTeam().addUnitsToTeam(newUnit);
-        this.game.getCurrentPlayer().getPlayersTeam().removeUnitsFromTeam(fromSquareunit);
-        this.game.getCurrentPlayer().getPlayersTeam().removeUnitsFromTeam(toSquareUnit);
+        currentTeam.addUnitsToTeam(newUnit);
+        currentTeam.removeUnitsFromTeam(fromSquareunit);
+        currentTeam.removeUnitsFromTeam(toSquareUnit);
         this.game.changeTurn();
     }
 }
