@@ -32,10 +32,10 @@ public abstract class Recruiter extends Unit {
      */
     public Recruiter(char symbol, String name, double health, double healthModifier, double damage,
             double damageModifier,
-            int luck, int xCor, int yCor, int movement, int movementModifier, String teamColor, int numRecruits) {
+            int luck, int xCor, int yCor, int movement, int movementModifier, String teamColor, int numRecruits, int numTimesSpawned) {
         super(symbol, name, health, healthModifier, damage, damageModifier, luck, xCor, yCor, movement,
                 movementModifier,
-                teamColor);
+                teamColor, numTimesSpawned);
         this.numRecruits = numRecruits;
     }
 
