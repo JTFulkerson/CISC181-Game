@@ -13,21 +13,21 @@ public class DukeUnit extends King {
 
     public DukeUnit (char symbol, String name, double health, double healthModifier, double damage,
                      double damageModifier, int luck, int xCor, int yCor, int movement, int movementModifier,
-                     String teamColor, int numAttacks, int numRecruits) {
+                     String teamColor, int numAttacks, int numRecruits, int numTimesSpawned) {
         super(symbol, name, health, healthModifier, damage,
-                damageModifier, luck, xCor, yCor, movement, movementModifier, teamColor, numAttacks, numRecruits);
+                damageModifier, luck, xCor, yCor, movement, movementModifier, teamColor, numAttacks, numRecruits, numTimesSpawned);
     }
 
     public DukeUnit () {
         this('D', "Duke", 150.0, 0.0, 30.0, 0.0, 0, 5,
-                5, 1, 0, "Unknown", 0, 0);
+                5, 1, 0, "Unknown", 0, 0, 0);
     }
 
     @Override
     public DukeUnit spawn () {
         return new DukeUnit(Character.toLowerCase(super.symbol), "Duke", 150.0, 0.0,
                 30.0, 0.0, 0, 5, 5, 1, 0,
-                "Unknown", 0, 0);
+                "Unknown", 0, 0, 0);
     }
 
     @Override
