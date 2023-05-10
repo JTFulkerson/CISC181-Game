@@ -32,15 +32,20 @@ public class Rules {
                             System.out.println("The to square must be empty!");
                         }
                     } else if (action == 'S') {
-                        if (gameBoard[unitRowTo][unitColumnTo].isEmpty()) {
-                            if (gameBoard[unitRowFrom][unitColumnFrom].getUnit().validSpawnPath(unitRowFrom,
-                                    unitColumnFrom, unitRowTo, unitColumnTo)) {
-                                isValidAction = true;
+                        if (gameBoard[unitRowFrom][unitColumnFrom].getUnit().canSpawn()) {
+                            if (gameBoard[unitRowTo][unitColumnTo].isEmpty()) {
+                                if (gameBoard[unitRowFrom][unitColumnFrom].getUnit().validSpawnPath(unitRowFrom,
+                                        unitColumnFrom, unitRowTo, unitColumnTo)) {
+                                    isValidAction = true;
+                                } else {
+                                    System.out.println("The unit must be able to spawn, your path is blocked!");
+                                }
                             } else {
-                                System.out.println("The unit must be able to spawn, your path is blocked!");
+                                System.out.println("The to square must be empty!");
                             }
-                        } else {
-                            System.out.println("The to square must be empty!");
+                        }
+                        else {
+                            System.out.println("This unit cannot spawn!");
                         }
                     } else if (action == 'R') {
                         // Checks to see if unit is of type BartSimpsonUnit

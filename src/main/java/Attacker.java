@@ -32,10 +32,11 @@ public abstract class Attacker extends Unit {
      */
     public Attacker(char symbol, String name, double health, double healthModifier, double damage,
             double damageModifier,
-            int luck, int xCor, int yCor, int movement, int movementModifier, String teamColor, int numAttacks) {
+            int luck, int xCor, int yCor, int movement, int movementModifier,
+                    String teamColor, int numAttacks, int numTimesSpawned) {
         super(symbol, name, health, healthModifier, damage, damageModifier, luck, xCor, yCor, movement,
                 movementModifier,
-                teamColor);
+                teamColor, numTimesSpawned);
         this.numAttacks = numAttacks;
     }
 

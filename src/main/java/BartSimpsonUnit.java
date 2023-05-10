@@ -10,10 +10,8 @@
  */
 
 public class BartSimpsonUnit extends Recruiter {
-    private int numTimesSpawned; // The number of times this piece has spawned
     private boolean distract; // Can use special ability distract
     private boolean recruit; // Can recruit other units
-    final static int MAX_NUM_SPAWNED = 1; // The maximum number of times this piece can spawn
 
     /**
      * This constructor accepts 14 parameters relating to the 14 private variable
@@ -40,8 +38,7 @@ public class BartSimpsonUnit extends Recruiter {
             double damageModifier, int luck, int xCor, int yCor, int movement, int movementModifier,
             int numTimesSpawned, boolean distract, boolean recruit, String teamColor, int numRecruits) {
         super(symbol, name, health, healthModifier, damage, damageModifier, luck, xCor, yCor,
-                movement, movementModifier, teamColor, numRecruits);
-        this.numTimesSpawned = numTimesSpawned;
+                movement, movementModifier, teamColor, numRecruits, numTimesSpawned);
         this.distract = distract;
         this.recruit = recruit;
     }
@@ -55,14 +52,6 @@ public class BartSimpsonUnit extends Recruiter {
         this('B', "Bart Simpson", 100.0, 0.0, 25.0, 0.0, 0,
                 5, 5, 1, 0, 0,
                 true, true, "Unknown", 0);
-    }
-
-    public int getNumTimesSpawned() {
-        return this.numTimesSpawned;
-    }
-
-    public void setNumTimesSpawned(int numTimesSpawned) {
-        this.numTimesSpawned = numTimesSpawned;
     }
 
     public boolean canDistract() {
@@ -109,9 +98,9 @@ public class BartSimpsonUnit extends Recruiter {
     @Override
     public BartSimpsonUnit spawn() {
         this.numTimesSpawned++;
-        return new BartSimpsonUnit(this.symbol, "Bart Simpson", 100.0, 5.0,
+        return new BartSimpsonUnit(Character.toLowerCase(this.symbol), "Bart Simpson", 100.0, 5.0,
                 25.0, 10.0, 0, 1, 1, 1, 1, 0,
-                true, true, "Unknown", 0);
+                true, true, this.teamColor, 0);
     }
 
     /**

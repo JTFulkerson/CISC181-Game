@@ -22,6 +22,8 @@ public abstract class Unit {
     protected int movement; // Amount unit can move
     protected int movementModifier; // Modifications to units movement
     protected String teamColor; // The teams color
+    protected int numTimesSpawned;
+    final static int MAX_NUM_SPAWNED = 1; // The maximum number of times this piece can spawn
 
     /**
      * This constructor accepts 14 parameters
@@ -40,7 +42,7 @@ public abstract class Unit {
      * @param teamColor        The teams color
      */
     public Unit(char symbol, String name, double health, double healthModifier, double damage, double damageModifier,
-            int luck, int xCor, int yCor, int movement, int movementModifier, String teamColor) {
+            int luck, int xCor, int yCor, int movement, int movementModifier, String teamColor, int numTimesSpawned) {
         this.symbol = symbol;
         this.name = name;
         this.health = health;
@@ -53,6 +55,7 @@ public abstract class Unit {
         this.movement = movement;
         this.movementModifier = movementModifier;
         this.teamColor = teamColor;
+        this.numTimesSpawned = numTimesSpawned;
     }
 
     public char getSymbol() {
@@ -149,6 +152,14 @@ public abstract class Unit {
 
     public void setTeamColor(String teamColor) {
         this.teamColor = teamColor;
+    }
+
+    public int getNumTimesSpawned() {
+        return this.numTimesSpawned;
+    }
+
+    public void setNumTimesSpawned(int numTimesSpawned) {
+        this.numTimesSpawned = numTimesSpawned;
     }
 
     /**
