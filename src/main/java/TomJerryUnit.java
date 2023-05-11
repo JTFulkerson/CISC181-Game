@@ -108,6 +108,7 @@ public class TomJerryUnit extends Attacker {
      */
     @Override
     public TomJerryUnit spawn() {
+        this.numTimesSpawned++;
         return new TomJerryUnit(Character.toLowerCase(symbol), "Tom & Jerry", 100.0, 0.0,
                 25.0, 0.0, 0,
                 5, 5, 1, 0, true, true, false,
@@ -116,7 +117,7 @@ public class TomJerryUnit extends Attacker {
 
     @Override
     public boolean canSpawn() {
-        return true;
+        return (this.symbol == Character.toUpperCase(symbol) && this.numTimesSpawned < MAX_NUM_SPAWNED);
     }
 
     /**
