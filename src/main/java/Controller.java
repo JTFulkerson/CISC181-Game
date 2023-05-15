@@ -110,7 +110,7 @@ public class Controller {
             }
             System.out.println(this.game);
         }
-        System.out.println("Winning Move: " + this.linkedList.pop());
+        System.out.println("Winning Move: " + this.linkedList.pop().getGameState().getEventDetails());
         this.textView.printEndOfGameMessage(this.game);
         ArrayList<GameEventsLinkedList> gameEventLog = new ArrayList<GameEventsLinkedList>();
         gameEventLog.add(this.linkedList.pop("A"));
