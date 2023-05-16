@@ -45,9 +45,9 @@ public class ActionRecruit extends Action {
         return game.getCurrentPlayer().getPlayersTeam().getTeamColor() + " teams "
                 + game.getBoardSquares()[this.rowIndexBoardSquare][this.columnIndexBoardSquare]
                         .getUnit().getName()
-                + " unit recruits from " + this.rowIndexUnit + "," + this.columnIndexUnit + " to "
-                + this.rowIndexBoardSquare + ","
-                + this.columnIndexBoardSquare;
+                + " unit recruits from " + this.rowIndexBoardSquare + "," + this.columnIndexBoardSquare + " to "
+                + this.rowIndexUnit + ","
+                + this.columnIndexUnit;
 
     }
 }

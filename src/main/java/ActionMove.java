@@ -42,9 +42,9 @@ public class ActionMove extends Action {
         return game.getCurrentPlayer().getPlayersTeam().getTeamColor() + " teams "
                 + game.getBoardSquares()[this.rowIndexBoardSquare][this.columnIndexBoardSquare]
                         .getUnit().getName()
-                + " unit moves from " + this.rowIndexUnit + "," + this.columnIndexUnit + " to "
-                + this.rowIndexBoardSquare + ","
-                + this.columnIndexBoardSquare;
+                + " unit moves from " + this.rowIndexBoardSquare + "," + this.columnIndexBoardSquare + " to "
+                + this.rowIndexUnit + ","
+                + this.columnIndexUnit;
 
     }
 }

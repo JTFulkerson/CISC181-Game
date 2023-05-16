@@ -43,8 +43,7 @@ public class ActionAttack extends Action {
                     this.game.getOpponentPlayer().getPlayersTeam().removeUnitsFromTeam(attackedUnit);
                     dead = true;
                 }
-            }
-            else {
+            } else {
                 this.game.getBoardSquares()[this.rowIndexUnit][this.columnIndexUnit].removeUnit();
                 this.game.getOpponentPlayer().getPlayersTeam().removeUnitsFromTeam(attackedUnit);
                 dead = true;
@@ -63,9 +62,9 @@ public class ActionAttack extends Action {
         return game.getCurrentPlayer().getPlayersTeam().getTeamColor() + " teams "
                 + game.getBoardSquares()[this.rowIndexBoardSquare][this.columnIndexBoardSquare]
                         .getUnit().getName()
-                + " unit attacks from " + this.rowIndexUnit + "," + this.columnIndexUnit + " to "
-                + this.rowIndexBoardSquare + ","
-                + this.columnIndexBoardSquare;
+                + " unit attacks from " + this.rowIndexBoardSquare + "," + this.columnIndexBoardSquare + " to "
+                + this.rowIndexUnit + ","
+                + this.columnIndexUnit;
 
     }
 }

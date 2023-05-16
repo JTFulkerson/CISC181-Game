@@ -65,30 +65,36 @@ public class Controller {
 
     public void carryOutAction(int fromSquareRow, int fromSquareColumn, int toSquareRow, int toSquareColumn,
             char action) {
+        String actionString = "";
         if (action == 'M') {
             ActionMove move = new ActionMove(this.game, fromSquareRow, fromSquareColumn, toSquareRow, toSquareColumn);
+            actionString = move.toString();
             move.performAction();
             // Part 6
         } else if (action == 'S') {
             ActionSpawn spawn = new ActionSpawn(this.game, fromSquareRow, fromSquareColumn, toSquareRow,
                     toSquareColumn);
+            actionString = spawn.toString();
             spawn.performAction();
         } else if (action == 'R') {
             ActionRecruit recruit = new ActionRecruit(this.game, fromSquareRow, fromSquareColumn, toSquareRow,
                     toSquareColumn);
+            actionString = recruit.toString();
             recruit.performAction();
         } else if (action == 'A') {
             ActionAttack attack = new ActionAttack(this.game, fromSquareRow, fromSquareColumn, toSquareRow,
                     toSquareColumn);
+            actionString = attack.toString();
             attack.performAction();
         } else if (action == 'T') {
             ActionTrade trade = new ActionTrade(this.game, fromSquareRow, fromSquareColumn, toSquareRow,
                     toSquareColumn);
+            actionString = trade.toString();
             trade.performAction();
         }
         GameEventNode theGameEventNode = new GameEventNode(
                 new GameEvent(this.game.getCurrentPlayer().getPlayerNumber(), action + "",
-                        this.game.toString()));
+                        actionString));
         this.linkedList.push(theGameEventNode);
     }
 
@@ -110,7 +116,9 @@ public class Controller {
             }
             System.out.println(this.game);
         }
-        System.out.println("Winning Move: " + this.linkedList.pop().getGameState().getEventDetails());
+        GameEventNode winningMove = this.linkedList.pop();
+        System.out.println("Winning Move: " + winningMove.getGameState().getEventDetails());
+        this.linkedList.push(winningMove);
         this.textView.printEndOfGameMessage(this.game);
         ArrayList<GameEventsLinkedList> gameEventLog = new ArrayList<GameEventsLinkedList>();
         gameEventLog.add(this.linkedList.pop("A"));
@@ -125,7 +133,10 @@ public class Controller {
 
         // Prints the gameEventLog
         for (GameEventsLinkedList gameEventsLinkedList : gameEventLog) {
-            System.out.println(gameEventsLinkedList);
+            if (gameEventsLinkedList.getSize() > 0) {
+                System.out.println("Size: " + gameEventsLinkedList.getSize() + ", Action: "
+                        + gameEventsLinkedList.getNode(0).getGameState().getEventType());
+            }
         }
     }
 
