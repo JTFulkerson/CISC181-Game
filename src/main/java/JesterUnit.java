@@ -30,7 +30,7 @@ public class JesterUnit extends BartSimpsonUnit {
     @Override
     public boolean canSpawn() {
 
-        return (this.symbol == 'J' && this.getNumTimesSpawned() < MAX_NUM_SPAWNED);
+        return (this.symbol == 'J' && this.getNumTimesSpawned() <= MAX_NUM_SPAWNED);
     }
 
     public JesterUnit spawn() {
