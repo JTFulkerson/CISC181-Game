@@ -30,8 +30,12 @@ public class Controller {
         TomJerryUnit tj = new TomJerryUnit();
         tj.setTeamColor("Blu");
 
+        JesterUnit j = new JesterUnit();
+        j.setTeamColor("Blu");
+
         piecesTeamA.add(bs);
         piecesTeamA.add(tj);
+        piecesTeamA.add(j);
 
         // Create a team object
         Team teamA = new Team("Blu", piecesTeamA);
@@ -46,8 +50,12 @@ public class Controller {
         TomJerryUnit tj2 = new TomJerryUnit();
         tj2.setTeamColor("Red");
 
+        JesterUnit j2 = new JesterUnit();
+        j2.setTeamColor("Red");
+
         piecesTeamB.add(bs2);
         piecesTeamB.add(tj2);
+        piecesTeamB.add(j2);
 
         // Create a team object
         Team teamB = new Team("Red", piecesTeamB);
@@ -72,10 +80,15 @@ public class Controller {
             move.performAction();
             // Part 6
         } else if (action == 'S') {
-            ActionSpawn spawn = new ActionSpawn(this.game, fromSquareRow, fromSquareColumn, toSquareRow,
-                    toSquareColumn);
-            actionString = spawn.toString();
-            spawn.performAction();
+            Unit currentUnit = this.game.getBoard().getSquares()[fromSquareRow][fromSquareColumn].getUnit();
+            if (currentUnit instanceof JesterUnit) {
+                currentUnit.setNumTimesSpawned(currentUnit.getNumTimesSpawned()+1);
+            }
+                ActionSpawn spawn = new ActionSpawn(this.game, fromSquareRow, fromSquareColumn, toSquareRow,
+                        toSquareColumn);
+                actionString = spawn.toString();
+                spawn.performAction();
+
         } else if (action == 'R') {
             ActionRecruit recruit = new ActionRecruit(this.game, fromSquareRow, fromSquareColumn, toSquareRow,
                     toSquareColumn);
