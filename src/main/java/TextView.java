@@ -52,9 +52,10 @@ public class TextView {
         boolean legal = false;
         String input = "";
         while (!legal) {
-            System.out.print("Enter either A (attack), M (Move), R (Recruit), S (Spawn): ");
+            System.out.print("Enter either A (attack), M (Move), R (Recruit), S (Spawn), T (Trade): ");
             input = scnr.next().toUpperCase(); // allows both upper and lowercase
-            if (input.charAt(0) == 'A' || input.charAt(0) == 'M' || input.charAt(0) == 'R' || input.charAt(0) == 'S') {
+            if (input.charAt(0) == 'A' || input.charAt(0) == 'M' || input.charAt(0) == 'R' || input.charAt(0) == 'S'
+            || input.charAt(0) == 'T') {
                 legal = true;
             } else {
                 System.out.println("Invalid Character");
@@ -127,7 +128,7 @@ public class TextView {
      */
     public void printEndOfGameMessage(Game game) {
         System.out.println("Game Over");
-        System.out.println("Player number " + game.getWinner().getPlayerNumber()
-                + game.getWinner().getPlayersTeam().getTeamColor() + " on the " + "team wins!");
+        System.out.println("Player number " + game.getWinner().getPlayerNumber() + " on the "
+                + game.getWinner().getPlayersTeam().getTeamColor() + " team wins!");
     }
 }

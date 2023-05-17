@@ -35,8 +35,21 @@ public class ActionSpawn extends Action {
     @Override
     public void performAction() {
         Unit fromUnit = this.game.getBoardSquares()[this.rowIndexBoardSquare][this.columnIndexBoardSquare].getUnit();
-        this.game.getCurrentPlayer().getPlayersTeam().addUnitsToTeam(fromUnit);
-        this.game.getBoardSquares()[this.rowIndexUnit][this.columnIndexUnit].setUnit(fromUnit);
+        Unit newUnit = fromUnit.spawn();
+        this.game.getCurrentPlayer().getPlayersTeam().addUnitsToTeam(newUnit);
+        this.game.getBoardSquares()[this.rowIndexUnit][this.columnIndexUnit].setUnit(newUnit);
         this.game.changeTurn();
+    }
+
+    @Override
+    public String toString() {
+
+        return game.getCurrentPlayer().getPlayersTeam().getTeamColor() + " teams "
+                + game.getBoardSquares()[this.rowIndexBoardSquare][this.columnIndexBoardSquare]
+                        .getUnit().getName()
+                + " unit spawns from " + this.rowIndexBoardSquare + "," + this.columnIndexBoardSquare + " to "
+                + this.rowIndexUnit + ","
+                + this.columnIndexUnit;
+
     }
 }

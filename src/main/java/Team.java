@@ -56,7 +56,7 @@ public class Team {
     public String toString() {
         String unitString = "";
         for (Unit unit : units) {
-            unitString += unit.toString() + "   ";
+            unitString += unit.toString() + " (Health:  " + unit.health +  ")   ";
         }
         return "Team " + this.teamColor + " Units : \n" + unitString;
     }

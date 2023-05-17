@@ -43,15 +43,28 @@ public class ActionAttack extends Action {
                     this.game.getOpponentPlayer().getPlayersTeam().removeUnitsFromTeam(attackedUnit);
                     dead = true;
                 }
+            } else {
+                this.game.getBoardSquares()[this.rowIndexUnit][this.columnIndexUnit].removeUnit();
+                this.game.getOpponentPlayer().getPlayersTeam().removeUnitsFromTeam(attackedUnit);
+                dead = true;
             }
-            this.game.getBoardSquares()[this.rowIndexUnit][this.columnIndexUnit].removeUnit();
-            this.game.getOpponentPlayer().getPlayersTeam().removeUnitsFromTeam(attackedUnit);
-            dead = true;
         }
         if (dead) {
             this.game.getBoardSquares()[this.rowIndexBoardSquare][this.columnIndexBoardSquare].removeUnit();
             this.game.getBoardSquares()[this.rowIndexUnit][this.columnIndexUnit].setUnit(attackingUnit);
         }
         this.game.changeTurn();
+    }
+
+    @Override
+    public String toString() {
+
+        return game.getCurrentPlayer().getPlayersTeam().getTeamColor() + " teams "
+                + game.getBoardSquares()[this.rowIndexBoardSquare][this.columnIndexBoardSquare]
+                        .getUnit().getName()
+                + " unit attacks from " + this.rowIndexBoardSquare + "," + this.columnIndexBoardSquare + " to "
+                + this.rowIndexUnit + ","
+                + this.columnIndexUnit;
+
     }
 }

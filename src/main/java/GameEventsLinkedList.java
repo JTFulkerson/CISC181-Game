@@ -6,6 +6,10 @@ class GameEvent {
     /**
      * The constructor for the GameEvent class that accepts the parameters (int)
      * playerNumber, (String) eventType, and (String) eventDetails
+     * 
+     * @param playerNumber The unique identifier for a player
+     * @param eventType    The tag for different event categories
+     * @param eventDetails The description of the game event
      */
     public GameEvent(int playerNumber, String eventType, String eventDetails) {
         this.eventType = eventType;
@@ -68,7 +72,7 @@ class GameEventNode {
     }
 }
 
-public class GameEventsLinkedList {
+public class GameEventsLinkedList implements Comparable<GameEventsLinkedList> {
     private GameEventNode head; // stores a reference to the first node in the list
     private int size; // stores the number of nodes in the list
 
@@ -106,67 +110,78 @@ public class GameEventsLinkedList {
     }
 
     /**
-     * This method adds a GameEventNode to the end of the list
+     * This method compares the size of the list to the size of another list
      * 
-     * @param GameEventNode: the GameEventNode to be added to the list
+     * @param other The other GameEventsLinkedList to be compared to
+     * @return int: 1 if the list is larger, -1 if the list is smaller, 0 if the two
+     *         lists are the same size
      */
-    public void add(GameEventNode node) {
-        if (this.isEmpty()) {
+    public int compareTo(GameEventsLinkedList other) {
+        if (this.getSize() > other.getSize()) {
+            return 1;
+        } else if (this.getSize() < other.getSize()) {
+            return -1;
+        } else {
+            return 0;
+        }
+    }
+
+    /**
+     * This method pushes a GameEventNode to the front of the list
+     * 
+     * @param GameEventNode: the GameEventNode to be pushed to the list
+     */
+    public void push(GameEventNode node) {
+        if (isEmpty()) {
             this.head = node;
         } else {
-            GameEventNode current = head;
-            while (current.getNext() != null) {
-                current = current.getNext();
-            }
-            current.setNext(node);
+            node.setNext(this.head);
+            this.head = node;
         }
-        this.size++;
+        size++;
     }
 
     /**
-     * This method removes a GameEventNode from the list
+     * This method pops the first GameEventNode from the list and returns it
      * 
-     * @param GameEventNode: the GameEventNode to be removed from the list
-     * @return GameEvent: the GameEvent that was removed from the list
+     * @return GameEventNode: the GameEventNode that was popped from the list
      */
-    public GameEvent remove(GameEventNode node) {
-        GameEvent gameEvent = null;
-        if (!isEmpty()) {
-            if (node == head) {
-                gameEvent = head.getGameState();
-                head = head.getNext();
-            } else {
-                GameEventNode current = head;
-                while (current != null && current.getNext() != node) {
-                    current = current.getNext();
-                }
-                if (current != null) {
-                    gameEvent = current.getNext().getGameState();
-                    current.setNext(current.getNext().getNext());
-                }
-            }
+    public GameEventNode pop() {
+        if (isEmpty()) {
+            throw new IndexOutOfBoundsException();
+        } else {
+            GameEventNode poppedNode = this.head;
+            this.head = this.head.getNext();
             size--;
+            return poppedNode;
         }
-        return gameEvent;
     }
 
     /**
-     * This method removes a GameEventNode from the list
-     * 
+     * This method removes all of the GameEventNodes of the specified eventType from
+     * the list and returns them in a new list
+     *
      * @param String: the eventType to be extracted from the list and returned
      * @return GameEventsLinkedList: the list of GameEventNodes that were extracted
      *         containing the specified eventType
      */
-    public GameEventsLinkedList extract(String eventType) {
+    public GameEventsLinkedList pop(String eventType) {
         GameEventsLinkedList extractedList = new GameEventsLinkedList();
-        if (!isEmpty()) {
-            GameEventNode current = head;
-            while (current != null) {
-                if (current.getGameState().getEventType().equals(eventType)) {
-                    extractedList.add(new GameEventNode(current.getGameState()));
+        GameEventNode current = this.head;
+        GameEventNode previous = null;
+        while (current != null) {
+            if (current.getGameState().getEventType().equals(eventType)) {
+                if (previous == null) {
+                    this.head = current.getNext();
+                } else {
+                    previous.setNext(current.getNext());
                 }
-                current = current.getNext();
+                extractedList.push(new GameEventNode(current.getGameState()));
+                size--;
+            } else {
+                previous = current;
             }
+            current = current.getNext();
         }
         return extractedList;
     }

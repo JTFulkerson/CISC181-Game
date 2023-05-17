@@ -30,12 +30,12 @@ public abstract class Recruiter extends Unit {
      * @param teamColor        The teams color
      * @param numRecruits
      */
-    public Recruiter(char symbol, String name, double health, double healthModifier, double damage,
-            double damageModifier,
-            int luck, int xCor, int yCor, int movement, int movementModifier, String teamColor,int numRecruits ) {
+    public Recruiter(char symbol, String name, double health, double healthModifier, double damage, double damageModifier,
+                     int luck, int xCor, int yCor, int movement, int movementModifier, String teamColor, int numRecruits,
+                     int numTimesSpawned) {
         super(symbol, name, health, healthModifier, damage, damageModifier, luck, xCor, yCor, movement,
                 movementModifier,
-                teamColor);
+                teamColor, numTimesSpawned);
         this.numRecruits = numRecruits;
     }
 
@@ -56,8 +56,6 @@ public abstract class Recruiter extends Unit {
      * @param columnIndexUnit
      * @return boolean: true if the unit can recruit another unit
      */
-    public boolean validRecruitPath(int rowIndexBoardSquare, int columnIndexBoardSquare, int rowIndexUnit,
-            int columnIndexUnit) {
-        return true;
-    }
+    public abstract boolean validRecruitPath(int rowIndexBoardSquare, int columnIndexBoardSquare, int rowIndexUnit,
+            int columnIndexUnit);
 }

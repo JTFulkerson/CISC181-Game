@@ -37,9 +37,9 @@ public class TomJerryUnit extends Attacker {
      */
     public TomJerryUnit(char symbol, String name, double health, double healthModifier, double damage,
             double damageModifier, int luck, int xCor, int yCor, int movement, int movementModifier,
-            boolean homingRocket, boolean offerCheese, boolean hiding, String teamColor, int numAttacks) {
+            boolean homingRocket, boolean offerCheese, boolean hiding, String teamColor, int numAttacks, int numTimeSpawned) {
         super(symbol, name, health, healthModifier, damage,
-                damageModifier, luck, xCor, yCor, movement, movementModifier, teamColor, numAttacks);
+                damageModifier, luck, xCor, yCor, movement, movementModifier, teamColor, numAttacks, numTimeSpawned);
         this.homingRocket = homingRocket;
         this.offerCheese = offerCheese;
         this.hiding = hiding;
@@ -53,7 +53,7 @@ public class TomJerryUnit extends Attacker {
     public TomJerryUnit() {
         this('T', "Tom & Jerry", 100.0, 0.0, 25.0, 0.0, 0,
                 5, 5, 1, 0,
-                true, true, false, "Unknown", 0);
+                true, true, false, "Unknown", 0, 0);
     }
 
     public boolean canHomingRocket() {
@@ -108,14 +108,60 @@ public class TomJerryUnit extends Attacker {
      */
     @Override
     public TomJerryUnit spawn() {
+        this.numTimesSpawned++;
         return new TomJerryUnit(Character.toLowerCase(symbol), "Tom & Jerry", 100.0, 0.0,
                 25.0, 0.0, 0,
                 5, 5, 1, 0, true, true, false,
-                "Unknown", 0);
+                this.teamColor, 0, 0);
     }
 
     @Override
     public boolean canSpawn() {
+        return (this.symbol == Character.toUpperCase(symbol) && this.numTimesSpawned < MAX_NUM_SPAWNED);
+    }
+
+    /**
+     * TomJerryUnit can move anywhere on the board
+     * 
+     * @param fromSquareRow    The row of the square the unit is on
+     * @param fromSquareColumn The column of the square the unit is on
+     * @param toSquareRow      The row of the square the unit is moving to
+     * @param toSquareColumn   The column of the square the unit is moving to
+     * @return Always returns true
+     */
+    @Override
+    public boolean validMovePath(int fromSquareRow, int fromSquareColumn, int toSquareRow, int toSquareColumn) {
+        return true;
+    }
+
+    /**
+     * Limits attack to only two spaces up or down the column but no spaces
+     * across the row
+     * 
+     * @param fromSquareRow    The row of the square the unit is on
+     * @param fromSquareColumn The column of the square the unit is on
+     * @param toSquareRow      The row of the square the unit is attacking
+     * @param toSquareColumn   The column of the square the unit is attacking
+     * @return True if the attack is valid, false otherwise
+     */
+    @Override
+    public boolean validAttackPath(int fromSquareRow, int fromSquareColumn, int toSquareRow,
+            int toSquareColumn) {
+        return (Math.abs(fromSquareRow - toSquareRow) <= 2 && fromSquareColumn == toSquareColumn);
+    }
+
+    /**
+     * TomJerryUnit can spawn anywhere on the board
+     * 
+     * @param fromSquareRow    The row of the square the unit is on
+     * @param fromSquareColumn The column of the square the unit is on
+     * @param toSquareRow      The row of the square the unit is spawning to
+     * @param toSquareColumn   The column of the square the unit is spawning to
+     * @return Always returns true
+     */
+    @Override
+    public boolean validSpawnPath(int fromSquareRow, int fromSquareColumn, int toSquareRow,
+            int toSquareColumn) {
         return true;
     }
 }
