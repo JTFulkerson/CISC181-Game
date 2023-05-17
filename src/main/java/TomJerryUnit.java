@@ -147,7 +147,7 @@ public class TomJerryUnit extends Attacker {
     @Override
     public boolean validAttackPath(int fromSquareRow, int fromSquareColumn, int toSquareRow,
             int toSquareColumn) {
-        return (Math.abs(fromSquareRow - toSquareRow) <= 2 && fromSquareColumn == toSquareColumn);
+        return (Math.abs(fromSquareRow - toSquareRow) == 0) || (Math.abs(fromSquareRow - toSquareRow) <= 2 && fromSquareColumn == toSquareColumn);
     }
 
     /**
