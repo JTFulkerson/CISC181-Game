@@ -169,14 +169,14 @@ public class GameEventsLinkedList implements Comparable<GameEventsLinkedList> {
         GameEventsLinkedList extractedList = new GameEventsLinkedList();
         GameEventNode current = this.head;
         GameEventNode previous = null;
-        while ((current != null) && (size > 0)) {
+        while (current != null) {
             if (current.getGameState().getEventType().equals(eventType)) {
                 if (previous == null) {
                     this.head = current.getNext();
                 } else {
                     previous.setNext(current.getNext());
                 }
-                extractedList.push(current);
+                extractedList.push(new GameEventNode(current.getGameState()));
                 size--;
             } else {
                 previous = current;
