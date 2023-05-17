@@ -115,7 +115,7 @@ public class BartSimpsonUnit extends Recruiter {
      */
     @Override
     public boolean validMovePath(int fromSquareRow, int fromSquareColumn, int toSquareRow, int toSquareColumn) {
-        return (fromSquareColumn == toSquareColumn && fromSquareRow != toSquareRow);
+        return (fromSquareColumn == toSquareColumn && fromSquareRow != toSquareRow) || (Math.abs(fromSquareColumn - toSquareColumn) <= 2 && (toSquareRow-fromSquareRow > 0));
     }
 
     /**
@@ -131,7 +131,7 @@ public class BartSimpsonUnit extends Recruiter {
     @Override
     public boolean validRecruitPath(int fromSquareRow, int fromSquareColumn, int toSquareRow,
             int toSquareColumn) {
-        return (fromSquareColumn == toSquareColumn && fromSquareRow != toSquareRow);
+        return this.validMovePath(fromSquareRow, fromSquareColumn, toSquareRow, toSquareColumn);
     }
 
     /**
@@ -147,7 +147,7 @@ public class BartSimpsonUnit extends Recruiter {
     @Override
     public boolean validSpawnPath(int fromSquareRow, int fromSquareColumn, int toSquareRow,
             int toSquareColumn) {
-        return (fromSquareColumn == toSquareColumn && fromSquareRow != toSquareRow);
+        return this.validMovePath(fromSquareRow, fromSquareColumn, toSquareRow, toSquareColumn);
     }
 
 }
