@@ -45,10 +45,7 @@ public class ActionAttack extends Action {
                 }
             }
             if (attackedUnit instanceof JesterUnit) {
-                //assumption that DukeUnit does not attack
-                double attackingUnitTotalDamage= ((TomJerryUnit) attackingUnit).dealDamage();
-                double attackedUnitHealth = attackedUnit.getHealth() + attackedUnit.getHealthModifier();
-                if (attackingUnitTotalDamage >= attackedUnitHealth && attackedUnit.canSpawn()) {
+                if (attackedUnit.canSpawn()) {
                     // find and empty space
                     BoardSquare emptySpace = this.game.getBoard().findRandomEmptySpace();
                     // spawn a new unit
