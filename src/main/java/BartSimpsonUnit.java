@@ -115,7 +115,7 @@ public class BartSimpsonUnit extends Recruiter {
      */
     @Override
     public boolean validMovePath(int fromSquareRow, int fromSquareColumn, int toSquareRow, int toSquareColumn) {
-        return (fromSquareColumn == toSquareColumn && fromSquareRow != toSquareRow) || (Math.abs(fromSquareColumn - toSquareColumn) <= 2 && (toSquareRow-fromSquareRow > 0));
+        return (fromSquareColumn == toSquareColumn && fromSquareRow != toSquareRow) || (Math.abs(fromSquareColumn - toSquareColumn) <= 2 && ((toSquareRow-fromSquareRow) >= 0));
     }
 
     /**
