@@ -139,7 +139,7 @@ public class TomJerryUnit extends Attacker {
      * across the row
      * 
      * @param fromSquareRow    The row of the square the unit is on
-     * @param fromSquareColumn The column of the square the unit is on
+     * @param fromSquareColumn The column of the square the unit is on:
      * @param toSquareRow      The row of the square the unit is attacking
      * @param toSquareColumn   The column of the square the unit is attacking
      * @return True if the attack is valid, false otherwise
