@@ -32,38 +32,47 @@ public class ActionAttack extends Action {
     @Override
     public void performAction() {
         boolean dead = false;
-        Unit attackingUnit = this.game.getBoardSquares()[this.rowIndexBoardSquare][this.columnIndexBoardSquare]
-                .getUnit();
-        Unit attackedUnit = this.game.getBoardSquares()[this.rowIndexUnit][this.columnIndexUnit].getUnit();
-        if (attackingUnit instanceof TomJerryUnit) {
-            if (attackedUnit instanceof TomJerryUnit) {
-                ((TomJerryUnit) attackedUnit).takeDamage(((TomJerryUnit) attackingUnit).dealDamage());
-                if (attackedUnit.getHealth() <= 0.0) {
-                    this.game.getBoardSquares()[this.rowIndexUnit][this.columnIndexUnit].removeUnit();
-                    this.game.getOpponentPlayer().getPlayersTeam().removeUnitsFromTeam(attackedUnit);
-                    dead = true;
-                }
-            }
-            if (attackedUnit instanceof JesterUnit) {
-                if (attackedUnit.canSpawn()) {
-                    // find and empty space
-                    BoardSquare emptySpace = this.game.getBoard().findRandomEmptySpace();
-                    // spawn a new unit
-                    JesterUnit newUnit = ((JesterUnit) attackedUnit).spawn();
-                    this.game.getCurrentPlayer().getPlayersTeam().addUnitsToTeam(newUnit);
-                    emptySpace.setUnit(newUnit);
-                }
-                this.game.getBoardSquares()[this.rowIndexUnit][this.columnIndexUnit].removeUnit();
-                this.game.getOpponentPlayer().getPlayersTeam().removeUnitsFromTeam(attackedUnit);
-                dead = true;
-            }
-            else {
-                this.game.getBoardSquares()[this.rowIndexUnit][this.columnIndexUnit].removeUnit();
-                this.game.getOpponentPlayer().getPlayersTeam().removeUnitsFromTeam(attackedUnit);
+        Unit attackingUnit =
+                this.game.getBoardSquares()[this.rowIndexBoardSquare][this.columnIndexBoardSquare].getUnit();
+        Unit attackedUnit =
+                this.game.getBoardSquares()[this.rowIndexUnit][this.columnIndexUnit].getUnit();
+        if (attackedUnit instanceof BartSimpsonUnit) {
+            dead = true;
+        }
+        else if (attackedUnit instanceof JesterUnit) {
+            if (attackedUnit.canSpawn()) {
+                // find and empty space
+                BoardSquare emptySpace = this.game.getBoard().findRandomEmptySpace();
+                // spawn a new unit
+                JesterUnit newUnit = ((JesterUnit) attackedUnit).spawn();
+                this.game.getCurrentPlayer().getPlayersTeam().addUnitsToTeam(newUnit);
+                emptySpace.setUnit(newUnit);
                 dead = true;
             }
         }
+        else if (attackingUnit instanceof TomJerryUnit) {
+            if (attackedUnit instanceof TomJerryUnit) {
+                ((TomJerryUnit) attackedUnit).takeDamage(((TomJerryUnit) attackingUnit).dealDamage());
+            }
+            if (attackedUnit instanceof DukeUnit) {
+                ((DukeUnit) attackedUnit).takeDamage(((TomJerryUnit) attackingUnit).dealDamage());
+            }
+        }
+        else {
+            if (attackedUnit instanceof TomJerryUnit) {
+                ((TomJerryUnit) attackedUnit).takeDamage(((DukeUnit) attackingUnit).dealDamage());
+            }
+            if (attackedUnit instanceof DukeUnit) {
+                ((DukeUnit) attackedUnit).takeDamage(((DukeUnit) attackingUnit).dealDamage());
+            }
+        }
+        if (attackedUnit.getHealth() <= 0.0) {
+            this.game.getBoardSquares()[this.rowIndexUnit][this.columnIndexUnit].removeUnit();
+            this.game.getOpponentPlayer().getPlayersTeam().removeUnitsFromTeam(attackedUnit);
+            dead = true;
+        }
         if (dead) {
+            this.game.getOpponentPlayer().getPlayersTeam().removeUnitsFromTeam(attackedUnit);
             this.game.getBoardSquares()[this.rowIndexBoardSquare][this.columnIndexBoardSquare].removeUnit();
             this.game.getBoardSquares()[this.rowIndexUnit][this.columnIndexUnit].setUnit(attackingUnit);
         }

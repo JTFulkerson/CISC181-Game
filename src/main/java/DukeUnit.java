@@ -36,6 +36,23 @@ public class DukeUnit extends King {
         return true;
     }
 
+    /**
+     * This method determines how much damage the unit will deal
+     * @return Double representing the amount of damage the unit will deal
+     */
+    public double dealDamage() {
+        return this.damage + this.damageModifier;
+    }
+
+    /**
+     * This method determines how much health the unit will have left after taking
+     * damage
+     * @param damage The amount of damage the unit will take
+     */
+    public void takeDamage(double damage) {
+        this.health -= damage;
+    }
+
     @Override
     public boolean validMovePath(int fromSquareRow, int fromSquareColumn, int toSquareRow, int toSquareColumn) {
         return true;
@@ -59,6 +76,17 @@ public class DukeUnit extends King {
     @Override
     public boolean validAttackPath(int fromSquareRow, int fromSquareColumn, int toSquareRow,
                                    int toSquareColumn) {
+        return true;
+    }
+
+    @Override
+    public boolean validRecruitPath(int rowIndexBoardSquare, int columnIndexBoardSquare, int rowIndexUnit,
+                                             int columnIndexUnit) {
+        return true;
+    }
+
+    @Override
+    public boolean validTradePath(int rowIndexBoardSquare, int columnIndexBoardSquare, int rowIndexUnit, int columnIndexUnit) {
         return true;
     }
 }

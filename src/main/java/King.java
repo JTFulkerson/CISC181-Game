@@ -52,13 +52,11 @@ public abstract class King extends Unit {
      * @param columnIndexUnit
      * @return boolean: true if the unit can attack another unit
      */
-    public boolean validAttackPath(int rowIndexBoardSquare, int columnIndexBoardSquare, int rowIndexUnit,
-                                   int columnIndexUnit) {
-        return true;
-    }
+    public abstract boolean validAttackPath(int rowIndexBoardSquare, int columnIndexBoardSquare, int rowIndexUnit,
+                                   int columnIndexUnit);
 
-    public boolean validRecruitPath(int rowIndexBoardSquare, int columnIndexBoardSquare, int rowIndexUnit,
-                                    int columnIndexUnit) {
-        return true;
-    }
+    public abstract boolean validRecruitPath(int rowIndexBoardSquare, int columnIndexBoardSquare, int rowIndexUnit,
+                                    int columnIndexUnit);
+    public abstract boolean validTradePath(int rowIndexBoardSquare, int columnIndexBoardSquare, int rowIndexUnit,
+                                           int columnIndexUnit);
 }

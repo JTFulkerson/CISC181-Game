@@ -29,12 +29,11 @@ public class JesterUnit extends BartSimpsonUnit {
 
     @Override
     public boolean canSpawn() {
-
         return (this.symbol == 'J' && this.getNumTimesSpawned() <= MAX_NUM_SPAWNED);
     }
 
     public JesterUnit spawn() {
-        return new JesterUnit('J', "Jester", 100.0, 0.0, 0.0,0.0,
+        return new JesterUnit('j', "Jester", 100.0, 0.0, 0.0,0.0,
                 10, 5, 6, 1, 0, "Unknown", 0,
                 this.numTimesSpawned, true, true);
     }

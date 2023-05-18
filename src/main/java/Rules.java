@@ -49,13 +49,28 @@ public class Rules {
                         }
                     } else if (action == 'R') {
                         // Checks to see if unit is of type BartSimpsonUnit
-                        if (gameBoard[unitRowFrom][unitColumnFrom].getUnit() instanceof BartSimpsonUnit) {
+                        if (gameBoard[unitRowFrom][unitColumnFrom].getUnit() instanceof BartSimpsonUnit ||
+                            gameBoard[unitRowFrom][unitColumnTo].getUnit() instanceof DukeUnit ||
+                            gameBoard[unitRowFrom][unitColumnFrom].getUnit() instanceof JesterUnit) {
                             if (!gameBoard[unitRowTo][unitColumnTo].isEmpty()) {
                                 if (!gameBoard[unitRowTo][unitColumnTo].getUnit().getTeamColor()
                                         .equals(gameBoard[unitRowFrom][unitColumnFrom].getUnit().getTeamColor())) {
-                                    if (((BartSimpsonUnit) (gameBoard[unitRowFrom][unitColumnFrom].getUnit()))
+                                    if (gameBoard[unitRowFrom][unitColumnFrom].getUnit() instanceof BartSimpsonUnit &&
+                                            ((BartSimpsonUnit) (gameBoard[unitRowFrom][unitColumnFrom].getUnit()))
                                             .validRecruitPath(unitRowFrom,
                                                     unitColumnFrom, unitRowTo, unitColumnTo)) {
+                                        isValidAction = true;
+                                    }
+                                    if (gameBoard[unitRowFrom][unitColumnFrom].getUnit() instanceof DukeUnit &&
+                                            ((DukeUnit) (gameBoard[unitRowFrom][unitColumnFrom].getUnit()))
+                                                    .validRecruitPath(unitRowFrom,
+                                                            unitColumnFrom, unitRowTo, unitColumnTo)) {
+                                        isValidAction = true;
+                                    }
+                                    if (gameBoard[unitRowFrom][unitColumnFrom].getUnit() instanceof JesterUnit &&
+                                            ((JesterUnit) (gameBoard[unitRowFrom][unitColumnFrom].getUnit()))
+                                                    .validRecruitPath(unitRowFrom,
+                                                            unitColumnFrom, unitRowTo, unitColumnTo)) {
                                         isValidAction = true;
                                     } else {
                                         System.out.println(
@@ -71,13 +86,21 @@ public class Rules {
                             System.out.println("The unit must be of type BartSimpsonUnit!");
                         }
                     } else if (action == 'A') {
-                        if (gameBoard[unitRowFrom][unitColumnFrom].getUnit() instanceof TomJerryUnit) {
+                        if (gameBoard[unitRowFrom][unitColumnFrom].getUnit() instanceof TomJerryUnit ||
+                            gameBoard[unitRowFrom][unitColumnFrom].getUnit() instanceof DukeUnit) {
                             if (!gameBoard[unitRowTo][unitColumnTo].isEmpty()) {
                                 if (!gameBoard[unitRowTo][unitColumnTo].getUnit().getTeamColor()
                                         .equals(gameBoard[unitRowFrom][unitColumnFrom].getUnit().getTeamColor())) {
-                                    if (((TomJerryUnit) (gameBoard[unitRowFrom][unitColumnFrom].getUnit()))
+                                    if (gameBoard[unitRowFrom][unitColumnFrom].getUnit() instanceof TomJerryUnit &&
+                                            ((TomJerryUnit) (gameBoard[unitRowFrom][unitColumnFrom].getUnit()))
                                             .validAttackPath(unitRowFrom,
                                                     unitColumnFrom, unitRowTo, unitColumnTo)) {
+                                        isValidAction = true;
+                                    }
+                                    if (gameBoard[unitRowFrom][unitColumnFrom].getUnit() instanceof DukeUnit &&
+                                            ((DukeUnit) (gameBoard[unitRowFrom][unitColumnFrom].getUnit()))
+                                                    .validAttackPath(unitRowFrom,
+                                                            unitColumnFrom, unitRowTo, unitColumnTo)) {
                                         isValidAction = true;
                                     } else {
                                         System.out.println(
@@ -97,6 +120,9 @@ public class Rules {
                         if (gameBoard[unitRowTo][unitColumnTo].getUnit().teamColor.equals(
                                 game.getCurrentPlayer().getPlayersTeam().getTeamColor())) {
                             isValidAction = true;
+                        }
+                        else {
+                            System.out.println("The unit you are trying to trade with must be on your team!");
                         }
                     }
                 } else {
