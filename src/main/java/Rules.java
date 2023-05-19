@@ -86,34 +86,39 @@ public class Rules {
                             System.out.println("The unit must be of type BartSimpsonUnit/DukeUnit/JesterUnit!");
                         }
                     } else if (action == 'A') {
-                        if (gameBoard[unitRowFrom][unitColumnFrom].getUnit() instanceof TomJerryUnit ||
-                            gameBoard[unitRowFrom][unitColumnFrom].getUnit() instanceof DukeUnit) {
-                            if (!gameBoard[unitRowTo][unitColumnTo].isEmpty()) {
-                                if (!gameBoard[unitRowTo][unitColumnTo].getUnit().getTeamColor()
-                                        .equals(gameBoard[unitRowFrom][unitColumnFrom].getUnit().getTeamColor())) {
-                                    if (gameBoard[unitRowFrom][unitColumnFrom].getUnit() instanceof TomJerryUnit &&
-                                            ((TomJerryUnit) (gameBoard[unitRowFrom][unitColumnFrom].getUnit()))
-                                            .validAttackPath(unitRowFrom,
-                                                    unitColumnFrom, unitRowTo, unitColumnTo)) {
-                                        isValidAction = true;
-                                    }
-                                    else if (gameBoard[unitRowFrom][unitColumnFrom].getUnit() instanceof DukeUnit &&
-                                            ((DukeUnit) (gameBoard[unitRowFrom][unitColumnFrom].getUnit()))
-                                                    .validAttackPath(unitRowFrom,
-                                                            unitColumnFrom, unitRowTo, unitColumnTo)) {
-                                        isValidAction = true;
+                        if (game.getCurrentPlayer().getPlayersTeam().getCanAttack()) {
+                            if (gameBoard[unitRowFrom][unitColumnFrom].getUnit() instanceof TomJerryUnit ||
+                                    gameBoard[unitRowFrom][unitColumnFrom].getUnit() instanceof DukeUnit) {
+                                if (!gameBoard[unitRowTo][unitColumnTo].isEmpty()) {
+                                    if (!gameBoard[unitRowTo][unitColumnTo].getUnit().getTeamColor()
+                                            .equals(gameBoard[unitRowFrom][unitColumnFrom].getUnit().getTeamColor())) {
+                                        if (gameBoard[unitRowFrom][unitColumnFrom].getUnit() instanceof TomJerryUnit &&
+                                                ((TomJerryUnit) (gameBoard[unitRowFrom][unitColumnFrom].getUnit()))
+                                                        .validAttackPath(unitRowFrom,
+                                                                unitColumnFrom, unitRowTo, unitColumnTo)) {
+                                            isValidAction = true;
+                                        }
+                                        else if (gameBoard[unitRowFrom][unitColumnFrom].getUnit() instanceof DukeUnit &&
+                                                ((DukeUnit) (gameBoard[unitRowFrom][unitColumnFrom].getUnit()))
+                                                        .validAttackPath(unitRowFrom,
+                                                                unitColumnFrom, unitRowTo, unitColumnTo)) {
+                                            isValidAction = true;
+                                        } else {
+                                            System.out.println(
+                                                    "The from unit must be able to attack or your path is blocked!");
+                                        }
                                     } else {
-                                        System.out.println(
-                                                "The from unit must be able to attack or your path is blocked!");
+                                        System.out.println("The to square must have an enemy unit!");
                                     }
                                 } else {
-                                    System.out.println("The to square must have an enemy unit!");
+                                    System.out.println("The to square must have a unit!");
                                 }
                             } else {
-                                System.out.println("The to square must have a unit!");
+                                System.out.println("The unit must be of type TomJerryUnit/DukeUnit!");
                             }
-                        } else {
-                            System.out.println("The unit must be of type TomJerryUnit/DukeUnit!");
+                        }
+                        else {
+                            System.out.println("You must wait another turn before attacking");
                         }
                     }
                     else if (action == 'T') {
@@ -143,6 +148,12 @@ public class Rules {
             } else {
                 System.out.println("The from square must have a unit!");
             }
+        }
+        if (action == 'A' && isValidAction && game.getCurrentPlayer().getPlayersTeam().getCanAttack()) {
+            game.getCurrentPlayer().getPlayersTeam().setCanAttack(false);
+        }
+        else if (isValidAction) {
+            game.getCurrentPlayer().getPlayersTeam().setCanAttack(true);
         }
         return isValidAction;
     }

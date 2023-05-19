@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class Team {
     private String teamColor;
     private ArrayList<Unit> units;
+    private boolean canAttack;
 
     /**
      * This constructor takes 2 parameters and sets the team color and the units
@@ -25,6 +26,7 @@ public class Team {
     public Team(String teamColor, ArrayList<Unit> units) {
         this.teamColor = teamColor;
         this.units = units;
+        this.canAttack = true;
     }
 
     // Accessors
@@ -44,6 +46,14 @@ public class Team {
     public void addUnitsToTeam(Unit unit) {
         unit.teamColor = this.teamColor;
         this.units.add(unit);
+    }
+
+    public void setCanAttack (boolean canAttack) {
+        this.canAttack = canAttack;
+    }
+
+    public boolean getCanAttack () {
+        return this.canAttack;
     }
 
     /**
