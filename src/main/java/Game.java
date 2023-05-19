@@ -118,12 +118,10 @@ public class Game {
      * @return A boolean representing whether the game has a winner or not
      */
     public boolean isAWinner() {
-        if (this.player1.getPlayersTeam().getTeamUnits().size() == 0 &&
-                this.player2.getPlayersTeam().getTeamUnits().size() != 0) {
-            return true;
-        }
-        return this.player2.getPlayersTeam().getTeamUnits().size() == 0 &&
-                this.player1.getPlayersTeam().getTeamUnits().size() != 0;
+        return (this.player1.getPlayersTeam().getTeamUnits().size() == 0 ||
+                this.player2.getPlayersTeam().getTeamUnits().size() == 0) ||
+                (!containsAttacker(this.player1.getPlayersTeam()) ||
+                        !containsAttacker(this.player2.getPlayersTeam()));
     }
 
     /**
@@ -135,8 +133,25 @@ public class Game {
         Player winner = this.player1;
         if (this.player2.getPlayersTeam().getTeamUnits().size() > this.player1.getPlayersTeam().getTeamUnits().size()) {
             winner = this.player2;
+        } else if (!containsAttacker(this.player2.getPlayersTeam())) {
+            winner = this.player1;
         }
         return winner;
+    }
+
+    /**
+     * This method determines whether a team contains an attacker
+     * 
+     * @param team Team object representing the team to check
+     * @return A boolean representing whether the team contains an attacker
+     */
+    public boolean containsAttacker(Team team) {
+        for (Unit unit : team.getTeamUnits()) {
+            if ((unit instanceof King) || (unit instanceof Attacker)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -145,8 +160,10 @@ public class Game {
      * @return A boolean representing if the game ended
      */
     public boolean isGameEnded() {
-        return this.player1.getPlayersTeam().getTeamUnits().size() == 0 ||
-                this.player2.getPlayersTeam().getTeamUnits().size() == 0;
+        return (this.player1.getPlayersTeam().getTeamUnits().size() == 0 ||
+                this.player2.getPlayersTeam().getTeamUnits().size() == 0) ||
+                (!containsAttacker(this.player1.getPlayersTeam()) ||
+                        !containsAttacker(this.player2.getPlayersTeam()));
     }
 
     /**
