@@ -118,7 +118,7 @@ public class Rules {
                             }
                         }
                         else {
-                            System.out.println("You must wait another turn before attacking");
+                            System.out.println("You must wait another turn before attacking!");
                         }
                     }
                     else if (action == 'T') {
