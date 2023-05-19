@@ -180,4 +180,18 @@ public abstract class Unit {
 
     public abstract boolean validSpawnPath(int fromSquareRow, int fromSquareColumn, int toSquareRow,
             int toSquareColumn);
+
+    /**
+     * Limits trading to the 1 space up and down and 1 space left and right
+     *
+     * @param fromSquareRow    The row of the square the unit is on
+     * @param fromSquareColumn The column of the square the unit is on
+     * @param toSquareRow      The row of the square the unit is spawning to
+     * @param toSquareColumn   The column of the square the unit is spawning to
+     * @return True if trade is valid, false otherwise
+     */
+    public boolean validTradePath(int fromSquareRow, int fromSquareColumn, int toSquareRow,
+                                  int toSquareColumn) {
+        return (Math.abs(fromSquareRow - toSquareRow) <= 1) && (Math.abs(fromSquareColumn - toSquareColumn) <= 1);
+    }
 }

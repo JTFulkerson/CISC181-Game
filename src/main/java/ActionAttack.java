@@ -36,10 +36,7 @@ public class ActionAttack extends Action {
                 this.game.getBoardSquares()[this.rowIndexBoardSquare][this.columnIndexBoardSquare].getUnit();
         Unit attackedUnit =
                 this.game.getBoardSquares()[this.rowIndexUnit][this.columnIndexUnit].getUnit();
-        if (attackedUnit instanceof BartSimpsonUnit) {
-            dead = true;
-        }
-        else if (attackedUnit instanceof JesterUnit) {
+        if (attackedUnit instanceof JesterUnit) {
             if (attackedUnit.canSpawn()) {
                 // find and empty space
                 BoardSquare emptySpace = this.game.getBoard().findRandomEmptySpace();
@@ -49,6 +46,9 @@ public class ActionAttack extends Action {
                 emptySpace.setUnit(newUnit);
                 dead = true;
             }
+        }
+        if (attackedUnit instanceof BartSimpsonUnit) {
+            dead = true;
         }
         else if (attackingUnit instanceof TomJerryUnit) {
             if (attackedUnit instanceof TomJerryUnit) {

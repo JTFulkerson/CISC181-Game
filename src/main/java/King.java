@@ -57,6 +57,4 @@ public abstract class King extends Unit {
 
     public abstract boolean validRecruitPath(int rowIndexBoardSquare, int columnIndexBoardSquare, int rowIndexUnit,
                                     int columnIndexUnit);
-    public abstract boolean validTradePath(int rowIndexBoardSquare, int columnIndexBoardSquare, int rowIndexUnit,
-                                           int columnIndexUnit);
 }

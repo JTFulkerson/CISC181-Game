@@ -83,7 +83,7 @@ public class Rules {
                                 System.out.println("The to square must have a unit!");
                             }
                         } else {
-                            System.out.println("The unit must be of type BartSimpsonUnit!");
+                            System.out.println("The unit must be of type BartSimpsonUnit/DukeUnit/JesterUnit!");
                         }
                     } else if (action == 'A') {
                         if (gameBoard[unitRowFrom][unitColumnFrom].getUnit() instanceof TomJerryUnit ||
@@ -113,16 +113,27 @@ public class Rules {
                                 System.out.println("The to square must have a unit!");
                             }
                         } else {
-                            System.out.println("The unit must be of type TomJerryUnit!");
+                            System.out.println("The unit must be of type TomJerryUnit/DukeUnit!");
                         }
                     }
                     else if (action == 'T') {
-                        if (gameBoard[unitRowTo][unitColumnTo].getUnit().teamColor.equals(
-                                game.getCurrentPlayer().getPlayersTeam().getTeamColor())) {
-                            isValidAction = true;
+                        if (!(gameBoard[unitRowTo][unitColumnTo].isEmpty())) {
+                            if (gameBoard[unitRowTo][unitColumnTo].getUnit().teamColor.equals(
+                                    game.getCurrentPlayer().getPlayersTeam().getTeamColor())) {
+                                if (gameBoard[unitRowFrom][unitColumnFrom].getUnit().validTradePath(
+                                        unitRowFrom, unitColumnFrom, unitRowTo, unitColumnTo)) {
+                                    isValidAction = true;
+                                }
+                                else {
+                                    System.out.println("Your trade path is blocked!");
+                                }
+                            }
+                            else {
+                                System.out.println("The unit you are trying to trade with must be on your team!");
+                            }
                         }
                         else {
-                            System.out.println("The unit you are trying to trade with must be on your team!");
+                            System.out.println("The to square must have a unit!");
                         }
                     }
                 } else {

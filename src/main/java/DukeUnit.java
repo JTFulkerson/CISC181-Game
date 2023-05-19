@@ -84,9 +84,4 @@ public class DukeUnit extends King {
                                              int columnIndexUnit) {
         return true;
     }
-
-    @Override
-    public boolean validTradePath(int rowIndexBoardSquare, int columnIndexBoardSquare, int rowIndexUnit, int columnIndexUnit) {
-        return true;
-    }
 }
