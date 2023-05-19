@@ -84,6 +84,7 @@ public class GameBoard {
             if (squares[row][column].isEmpty()) {
                 emptySpace = true;
             }
+            System.out.println("Row: " + row + "\nColumn: " + column);
         }
         return squares[row][column];
     }

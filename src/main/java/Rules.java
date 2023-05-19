@@ -61,13 +61,13 @@ public class Rules {
                                                     unitColumnFrom, unitRowTo, unitColumnTo)) {
                                         isValidAction = true;
                                     }
-                                    if (gameBoard[unitRowFrom][unitColumnFrom].getUnit() instanceof DukeUnit &&
+                                    else if (gameBoard[unitRowFrom][unitColumnFrom].getUnit() instanceof DukeUnit &&
                                             ((DukeUnit) (gameBoard[unitRowFrom][unitColumnFrom].getUnit()))
                                                     .validRecruitPath(unitRowFrom,
                                                             unitColumnFrom, unitRowTo, unitColumnTo)) {
                                         isValidAction = true;
                                     }
-                                    if (gameBoard[unitRowFrom][unitColumnFrom].getUnit() instanceof JesterUnit &&
+                                    else if (gameBoard[unitRowFrom][unitColumnFrom].getUnit() instanceof JesterUnit &&
                                             ((JesterUnit) (gameBoard[unitRowFrom][unitColumnFrom].getUnit()))
                                                     .validRecruitPath(unitRowFrom,
                                                             unitColumnFrom, unitRowTo, unitColumnTo)) {
@@ -97,7 +97,7 @@ public class Rules {
                                                     unitColumnFrom, unitRowTo, unitColumnTo)) {
                                         isValidAction = true;
                                     }
-                                    if (gameBoard[unitRowFrom][unitColumnFrom].getUnit() instanceof DukeUnit &&
+                                    else if (gameBoard[unitRowFrom][unitColumnFrom].getUnit() instanceof DukeUnit &&
                                             ((DukeUnit) (gameBoard[unitRowFrom][unitColumnFrom].getUnit()))
                                                     .validAttackPath(unitRowFrom,
                                                             unitColumnFrom, unitRowTo, unitColumnTo)) {

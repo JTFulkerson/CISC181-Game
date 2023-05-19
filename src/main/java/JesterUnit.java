@@ -13,7 +13,7 @@
  */
 public class JesterUnit extends BartSimpsonUnit {
 
-    final static int MAX_NUM_SPAWNED = 3;
+    final static int MAX_NUM_SPAWNED = 2;
     public JesterUnit(char symbol, String name, double health, double healthModifier, double damage, double damageModifier,
                       int luck, int xCor, int yCor, int movement, int movementModifier, String teamColor, int numRecruits,
                       int numTimesSpawned, boolean distract, boolean recruit) {
@@ -34,6 +34,7 @@ public class JesterUnit extends BartSimpsonUnit {
 
     @Override
     public JesterUnit spawn() {
+        this.numTimesSpawned++;
         return new JesterUnit('J', "Jester", 100.0, 0.0, 0.0,0.0,
                 10, 5, 6, 1, 0, "Unknown", 0,
                 this.numTimesSpawned, true, true);
@@ -79,8 +80,6 @@ public class JesterUnit extends BartSimpsonUnit {
     public boolean validRecruitPath(int fromSquareRow, int fromSquareColumn, int toSquareRow, int toSquareColumn) {
         return this.validSpawnPath(fromSquareRow, fromSquareColumn, toSquareRow, toSquareColumn);
     }
-
-
 }
 
 

@@ -42,10 +42,10 @@ public class ActionAttack extends Action {
                 BoardSquare emptySpace = this.game.getBoard().findRandomEmptySpace();
                 // spawn a new unit
                 JesterUnit newUnit = ((JesterUnit) attackedUnit).spawn();
-                this.game.getCurrentPlayer().getPlayersTeam().addUnitsToTeam(newUnit);
+                this.game.getOpponentPlayer().getPlayersTeam().addUnitsToTeam(newUnit);
                 emptySpace.setUnit(newUnit);
-                dead = true;
             }
+            dead = true;
         }
         if (attackedUnit instanceof BartSimpsonUnit) {
             dead = true;
