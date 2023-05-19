@@ -20,14 +20,14 @@ public class DukeUnit extends King {
     }
 
     public DukeUnit() {
-        this('D', "Duke", 150.0, 0.0, 35.0, 0.0, 0, 5,
+        this('D', "Duke", 150.0, 0.0, 35.0, 5.0, 0, 5,
                 5, 1, 0, "Unknown", 0, 0, 0);
     }
 
     @Override
     public DukeUnit spawn() {
         return new DukeUnit(Character.toLowerCase(super.symbol), "Duke", 150.0, 10.0,
-                30.0, 0.0, 0, 5, 5, 1, 0,
+                40.0, 10.0, 0, 5, 5, 1, 0,
                 "Unknown", 0, 0, 0);
     }
 
