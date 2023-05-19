@@ -18,6 +18,7 @@ public class Controller {
     private Game game;
     private TextView textView;
     private GameEventsLinkedList linkedList;
+    private BoardSquare specialSquare;
 
     public Game setUpGameModel() {
         // Create 4 pieces for team A
@@ -66,9 +67,11 @@ public class Controller {
 
     public Controller() {
         this.game = setUpGameModel();
+        this.specialSquare = this.game.getBoard().findRandomEmptySpace();
         this.textView = new TextView();
         this.textView.updateView(this.game);
         this.linkedList = new GameEventsLinkedList();
+
     }
 
     public void carryOutAction(int fromSquareRow, int fromSquareColumn, int toSquareRow, int toSquareColumn,
@@ -104,6 +107,9 @@ public class Controller {
                     toSquareColumn);
             actionString = trade.toString();
             trade.performAction();
+        }
+        if (this.game.getBoardSquares()[toSquareRow][toSquareColumn].getUnit() == this.specialSquare.getUnit()) {
+            this.game.getBoardSquares()[toSquareRow][toSquareColumn].getUnit().health+=10;
         }
         GameEventNode theGameEventNode = new GameEventNode(
                 new GameEvent(this.game.getCurrentPlayer().getPlayerNumber(), action + "",
