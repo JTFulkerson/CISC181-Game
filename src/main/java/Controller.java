@@ -85,12 +85,12 @@ public class Controller {
         } else if (action == 'S') {
             Unit currentUnit = this.game.getBoard().getSquares()[fromSquareRow][fromSquareColumn].getUnit();
             if (currentUnit instanceof JesterUnit) {
-                currentUnit.setNumTimesSpawned(currentUnit.getNumTimesSpawned()+1);
+                currentUnit.setNumTimesSpawned(currentUnit.getNumTimesSpawned() + 1);
             }
-                ActionSpawn spawn = new ActionSpawn(this.game, fromSquareRow, fromSquareColumn, toSquareRow,
-                        toSquareColumn);
-                actionString = spawn.toString();
-                spawn.performAction();
+            ActionSpawn spawn = new ActionSpawn(this.game, fromSquareRow, fromSquareColumn, toSquareRow,
+                    toSquareColumn);
+            actionString = spawn.toString();
+            spawn.performAction();
 
         } else if (action == 'R') {
             ActionRecruit recruit = new ActionRecruit(this.game, fromSquareRow, fromSquareColumn, toSquareRow,
@@ -109,7 +109,7 @@ public class Controller {
             trade.performAction();
         }
         if (this.game.getBoardSquares()[toSquareRow][toSquareColumn].getUnit() == this.specialSquare.getUnit()) {
-            this.game.getBoardSquares()[toSquareRow][toSquareColumn].getUnit().health+=10;
+            this.game.getBoardSquares()[toSquareRow][toSquareColumn].getUnit().health += 10;
         }
         GameEventNode theGameEventNode = new GameEventNode(
                 new GameEvent(this.game.getCurrentPlayer().getPlayerNumber(), action + "",
@@ -144,6 +144,7 @@ public class Controller {
         gameEventLog.add(this.linkedList.pop("R"));
         gameEventLog.add(this.linkedList.pop("S"));
         gameEventLog.add(this.linkedList.pop("M"));
+        gameEventLog.add(this.linkedList.pop("T"));
         // Add new event types here as they are created
 
         // Sorts the gameEventLog by the size value of each linked list in decending
