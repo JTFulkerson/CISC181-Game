@@ -117,7 +117,7 @@ public class Game {
      * 
      * @return A boolean representing whether the game has a winner or not
      */
-    public boolean isAWinner() {
+    public boolean isAWinner() { // New Objective Modification
         return (this.player1.getPlayersTeam().getTeamUnits().size() == 0 ||
                 this.player2.getPlayersTeam().getTeamUnits().size() == 0) ||
                 (!containsAttacker(this.player1.getPlayersTeam()) ||
@@ -129,7 +129,7 @@ public class Game {
      * 
      * @return Player object representing the player who won the game
      */
-    public Player getWinner() {
+    public Player getWinner() { // New Objective Modification
         Player winner = this.player1;
         if (this.player2.getPlayersTeam().getTeamUnits().size() > this.player1.getPlayersTeam().getTeamUnits().size()) {
             winner = this.player2;
@@ -145,7 +145,7 @@ public class Game {
      * @param team Team object representing the team to check
      * @return A boolean representing whether the team contains an attacker
      */
-    public boolean containsAttacker(Team team) {
+    public boolean containsAttacker(Team team) { // New Objective Modification
         for (Unit unit : team.getTeamUnits()) {
             if ((unit instanceof King) || (unit instanceof Attacker)) {
                 return true;
@@ -159,7 +159,7 @@ public class Game {
      * 
      * @return A boolean representing if the game ended
      */
-    public boolean isGameEnded() {
+    public boolean isGameEnded() { // New Objective Modification
         return (this.player1.getPlayersTeam().getTeamUnits().size() == 0 ||
                 this.player2.getPlayersTeam().getTeamUnits().size() == 0) ||
                 (!containsAttacker(this.player1.getPlayersTeam()) ||

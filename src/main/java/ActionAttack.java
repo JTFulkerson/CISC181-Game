@@ -36,7 +36,7 @@ public class ActionAttack extends Action {
                 this.game.getBoardSquares()[this.rowIndexBoardSquare][this.columnIndexBoardSquare].getUnit();
         Unit attackedUnit =
                 this.game.getBoardSquares()[this.rowIndexUnit][this.columnIndexUnit].getUnit();
-        if (attackedUnit instanceof JesterUnit) {
+        if (attackedUnit instanceof JesterUnit) { // New Unit Modification
             if (attackedUnit.canSpawn()) {
                 // find and empty space
                 BoardSquare emptySpace = this.game.getBoard().findRandomEmptySpace();
@@ -54,7 +54,7 @@ public class ActionAttack extends Action {
             if (attackedUnit instanceof TomJerryUnit) {
                 ((TomJerryUnit) attackedUnit).takeDamage(((TomJerryUnit) attackingUnit).dealDamage());
             }
-            if (attackedUnit instanceof DukeUnit) {
+            if (attackedUnit instanceof DukeUnit) { // New Unit Modification
                 ((DukeUnit) attackedUnit).takeDamage(((TomJerryUnit) attackingUnit).dealDamage());
             }
         }
@@ -62,7 +62,7 @@ public class ActionAttack extends Action {
             if (attackedUnit instanceof TomJerryUnit) {
                 ((TomJerryUnit) attackedUnit).takeDamage(((DukeUnit) attackingUnit).dealDamage());
             }
-            if (attackedUnit instanceof DukeUnit) {
+            if (attackedUnit instanceof DukeUnit) { // New Unit Modification
                 ((DukeUnit) attackedUnit).takeDamage(((DukeUnit) attackingUnit).dealDamage());
             }
         }

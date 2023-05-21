@@ -121,7 +121,7 @@ public class Rules {
                             System.out.println("You must wait another turn before attacking!");
                         }
                     }
-                    else if (action == 'T') {
+                    else if (action == 'T') { // New Action Modification
                         if (!(gameBoard[unitRowTo][unitColumnTo].isEmpty())) {
                             if (gameBoard[unitRowTo][unitColumnTo].getUnit().teamColor.equals(
                                     game.getCurrentPlayer().getPlayersTeam().getTeamColor())) {
@@ -149,10 +149,11 @@ public class Rules {
                 System.out.println("The from square must have a unit!");
             }
         }
+        // New Rule Modification
         if (action == 'A' && isValidAction && game.getCurrentPlayer().getPlayersTeam().getCanAttack()) {
             game.getCurrentPlayer().getPlayersTeam().setCanAttack(false);
         }
-        else if (isValidAction) {
+        else if (isValidAction) { // New Rule Modification
             game.getCurrentPlayer().getPlayersTeam().setCanAttack(true);
         }
         return isValidAction;
