@@ -31,11 +31,15 @@ public class Controller {
         TomJerryUnit tj = new TomJerryUnit();
         tj.setTeamColor("Blu");
 
+        TomJerryUnit tj2 = new TomJerryUnit();
+        tj2.setTeamColor("Blu");
+
         JesterUnit j = new JesterUnit();
         j.setTeamColor("Blu");
 
         piecesTeamA.add(bs);
         piecesTeamA.add(tj);
+        piecesTeamA.add(tj2);
         piecesTeamA.add(j);
 
         // Create a team object
@@ -48,14 +52,18 @@ public class Controller {
         BartSimpsonUnit bs2 = new BartSimpsonUnit();
         bs2.setTeamColor("Red");
 
-        TomJerryUnit tj2 = new TomJerryUnit();
-        tj2.setTeamColor("Red");
+        TomJerryUnit tj3 = new TomJerryUnit();
+        tj3.setTeamColor("Red");
+
+        TomJerryUnit tj4 = new TomJerryUnit();
+        tj4.setTeamColor("Red");
 
         JesterUnit j2 = new JesterUnit();
         j2.setTeamColor("Red");
 
         piecesTeamB.add(bs2);
-        piecesTeamB.add(tj2);
+        piecesTeamB.add(tj3);
+        piecesTeamB.add(tj4);
         piecesTeamB.add(j2);
 
         // Create a team object
