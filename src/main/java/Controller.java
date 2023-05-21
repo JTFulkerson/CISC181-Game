@@ -116,7 +116,8 @@ public class Controller {
             actionString = trade.toString();
             trade.performAction();
         }
-        if (this.game.getBoardSquares()[toSquareRow][toSquareColumn].getUnit() == this.specialSquare.getUnit()) {
+        if (this.game.getBoardSquares()[toSquareRow][toSquareColumn].getUnit() == this.specialSquare.getUnit() &&
+                action != 'R') {
             this.game.getBoardSquares()[toSquareRow][toSquareColumn].getUnit().health += 10;
         }
         GameEventNode theGameEventNode = new GameEventNode(
